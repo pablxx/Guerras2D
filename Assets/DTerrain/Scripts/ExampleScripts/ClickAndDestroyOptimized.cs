@@ -12,10 +12,10 @@ namespace DTerrain
             if (Mouse.current == null) return;
 
             // Detecta el clic izquierdo presionado
-            if (Mouse.current.rightButton.isPressed)
+            /*if (Mouse.current.rightButton.isPressed)
             {
                 BorrarConClicIzquierdo();
-            }
+            }*/
         }
 
         private void BorrarConClicIzquierdo()
@@ -43,7 +43,7 @@ namespace DTerrain
                 secondaryLayer.Paint(pp);
             }
         }
-        public void EjecutarDestruccionDesdeGusano(Vector3 posicionMundo)
+        public void EjecutarDestruccion(Vector3 posicionMundo)
         {
             if (primaryLayer == null || destroyCircle == null) return;
 

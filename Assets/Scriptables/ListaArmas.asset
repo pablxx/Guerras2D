@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7b0729cc46b93749a7be74c12151826, type: 3}
+  m_Name: ListaArmas
+  m_EditorClassIdentifier: 
+  armasInv:
+  - datosBaseArma: {fileID: 11400000, guid: 38d75257a33ad0d40b5c7a7c899f2797, type: 2}
+    cantidadMunicion: 5
+    esInfinita: 1
+  - datosBaseArma: {fileID: 11400000, guid: deebb20a4b3d0da4bb7105e99986b5ca, type: 2}
+    cantidadMunicion: 2
+    esInfinita: 0
+  - datosBaseArma: {fileID: 11400000, guid: 15708123a2170634dabbdfc77b192ae5, type: 2}
+    cantidadMunicion: 5
+    esInfinita: 1
+  - datosBaseArma: {fileID: 11400000, guid: 0d35702e5300e9e46ada3ba972418af6, type: 2}
+    cantidadMunicion: 5
+    esInfinita: 0
+  - datosBaseArma: {fileID: 11400000, guid: b66a30516b354bd4c91693be3b1258c4, type: 2}
+    cantidadMunicion: 2
+    esInfinita: 0
+  - datosBaseArma: {fileID: 11400000, guid: 2fe413308dff2d24db39da6286cb96a0, type: 2}
+    cantidadMunicion: 2
+    esInfinita: 0
+  - datosBaseArma: {fileID: 11400000, guid: ad43d3649a611974ea78bbcd585d2b33, type: 2}
+    cantidadMunicion: 5
+    esInfinita: 0
+  - datosBaseArma: {fileID: 11400000, guid: 5b7055702d83cd247aa2d2aafd83ab0c, type: 2}
+    cantidadMunicion: 5
+    esInfinita: 0
+  - datosBaseArma: {fileID: 11400000, guid: 8284663e752fed54d80d5503b928f353, type: 2}
+    cantidadMunicion: 2
+    esInfinita: 0

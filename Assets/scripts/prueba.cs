@@ -1,5 +1,5 @@
 using UnityEngine;
-using DTerrain;
+
 
 public class BombaPrueba : MonoBehaviour
 {
@@ -10,15 +10,8 @@ public class BombaPrueba : MonoBehaviour
         if (destructor != null)
         {
             Vector3 puntoImpacto = collision.contacts[0].point;
-
-            // Cambiamos a un tamaño grande (ej: 60)
             destructor.CambiarTamaño(50);
-
-            // Ejecutamos la explosión
-            destructor.EjecutarDestruccionDesdeGusano(puntoImpacto);
-
-            // Opcional: Regresamos el tamaño a lo normal (ej: 16) 
-            // para que el pincel del mouse no se quede gigante
+            destructor.EjecutarDestruccion(puntoImpacto);
             destructor.CambiarTamaño(16);
         }
 

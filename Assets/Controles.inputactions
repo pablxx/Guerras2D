@@ -26,12 +26,12 @@
                 },
                 {
                     "name": "Atacar",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "36b44578-b179-4005-b3c5-9fdf6f48aae0",
-                    "expectedControlType": "",
+                    "expectedControlType": "Digital",
                     "processors": "",
-                    "interactions": "Press",
-                    "initialStateCheck": false
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "MoverCamara",
@@ -59,6 +59,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Inventario",
+                    "type": "Button",
+                    "id": "491966e5-fd0c-4ea9-9130-2c7d6c56d017",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AjustarAngulo",
+                    "type": "Value",
+                    "id": "d531b329-6712-4819-9a05-fbc672d0d9a2",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -72,28 +90,6 @@
                     "action": "MoverPersonaje",
                     "isComposite": true,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "4e9b6d5a-76af-4dab-af5c-88ef9af722ea",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MoverPersonaje",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "7c664dee-2081-44fe-8eed-53d70a2bddfa",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MoverPersonaje",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 },
                 {
                     "name": "left",
@@ -215,6 +211,50 @@
                     "action": "Pintar",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c55c677b-fc55-4d1f-9998-b46e87a201e9",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Inventario",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Angulo",
+                    "id": "30c07de3-6c01-4e9a-a6bd-b75c7129a738",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AjustarAngulo",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "d2853cf2-5ded-43f6-b0e9-c1b48a41498f",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AjustarAngulo",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "a8929b8c-8e62-4841-b76d-8cebb3eff062",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AjustarAngulo",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

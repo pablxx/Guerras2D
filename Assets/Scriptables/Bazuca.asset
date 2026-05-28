@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c7cb3a5661a0b4ebc0ddcb3c0d0c06, type: 3}
+  m_Name: Bazuca
+  m_EditorClassIdentifier: 
+  Tipo: 0
+  NombreArma: Bazuca
+  Icono: {fileID: 21300000, guid: 2095598077302934ea2b921312129f43, type: 3}
+  Descripcion: Arma Basica de Explosion
+  RadioExplosion: 30
+  RadioDanio: 2
+  DanioMaximo: 80
+  FuerzaEmpuje: 20
+  PrefabArma: {fileID: 2502227960697875013, guid: d6225790f28302d45aaac36f9db21a1a, type: 3}
+  Temporizador: 0
+  TiempoExplosion: 0
+  Rafagas: 0
+  AudioInstancia: {fileID: 0}

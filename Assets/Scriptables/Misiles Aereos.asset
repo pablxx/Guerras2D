@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c7cb3a5661a0b4ebc0ddcb3c0d0c06, type: 3}
+  m_Name: Misiles Aereos
+  m_EditorClassIdentifier: 
+  Tipo: 3
+  NombreArma: Misiles Aereos
+  Icono: {fileID: 21300000, guid: e3b9a4d5aa482b943ab2c3a6b40b0e4b, type: 3}
+  Descripcion: ataque aereo
+  RadioExplosion: 30
+  RadioDanio: 1
+  DanioMaximo: 40
+  FuerzaEmpuje: 20
+  PrefabArma: {fileID: 3271280549089761344, guid: f3de74369f6ba104d9fce931d8ba9b45, type: 3}
+  Temporizador: 0
+  TiempoExplosion: 0
+  Rafagas: 5
