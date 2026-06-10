@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor.ShaderKeywordFilter;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -254,7 +255,7 @@ public class movimientoJugador : MonoBehaviour
         GameObject nuevaArma = Instantiate(armaSeleccionada.prefabArma, puntoDisparo.position, puntoDisparo.rotation);
 
         if (esMelee) nuevaArma.transform.SetParent(transform);
-       
+
 
         Arma scriptArma = nuevaArma.GetComponent<Arma>();
         if (scriptArma != null)
@@ -361,7 +362,7 @@ public class movimientoJugador : MonoBehaviour
             InvertirEscalaPersonaje();
         }
     }
-    
+
     private void InvertirEscalaPersonaje()
     {
         Vector3 escala = transform.localScale;
@@ -416,4 +417,16 @@ public class movimientoJugador : MonoBehaviour
         }
         DestruirMiraMouse();
     }
+
+    /* TANIA Y ALEX  .....ANIMACIONES DE CAMINAR, SALTAR, SACAR ARMA, MUERTE ,
+                          EN EL AIRE IMPLEMENTADOS EN EL UNITY*/
+    /* ILSEN  ............AUMENTAR UN ESCENARIO MAS CON TEMATICA DEL PARQUE TEMATICO Y ICONOS DE MAS ARMAS  */
+    /* VICTOR ............HACER UN ESCENARIO MEJORAR LA MUSICA*/
+    /* VALERIA ...........ANIMACION DE IU DE INICIO Y MEJORA VISUAL DE BOTONES (TIPOGRAFIA)*/
+    /* GLORIA ............INCORPORACION DE PARTICULAS (DESTRUCCION DEL TERRENO Y EFECTOS DE LAS ARMAS)*/
+    /* SAUL ..............ESCENA DE TRANSICION ANIMADA (CARGANDO.....) UNA ESCENA DE PRESENTACION(CARRERA DAD)  */
+    /* OTTICH ............PARTICULAS DE FUEGO BIEN OPTIMIZADO*/
+    /* KEVIN .............MENU DE PAUSA E INCORPORACION DE ASSETS EN LA ESCENA DEL JUEGO*/ 
+
+    /* SI NO GRABAN 0 NOMAS */
 }

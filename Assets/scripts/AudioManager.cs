@@ -18,6 +18,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] public List<AudioClip> listaMusicas;
     [Header("Lista de Explosiones Aleatorias")]
     [SerializeField] private List<AudioClip> sonidosExplosiones;
+    [SerializeField] private List<AudioClip> efectos;
 
     void Awake()
     {

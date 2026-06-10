@@ -13,6 +13,7 @@ public class TurnoManager : MonoBehaviour
     [SerializeField] private GameObject prefabEquipoB;
 
     [Header("Configuración de Partida")]
+    [SerializeField] EscaneadorMapa escaneadorMapa;
     [SerializeField] int cantidadSoldadosPorEquipo;
     [SerializeField] private Color colorEquipoA;
     [SerializeField] private Color colorEquipoB;
@@ -38,6 +39,7 @@ public class TurnoManager : MonoBehaviour
     public bool procesandoFaseMuertos = false;
     private Coroutine corrutinaNotificacionActiva;
 
+
     void Awake()
     {
         if (Instancia != null && Instancia != this)
@@ -47,8 +49,7 @@ public class TurnoManager : MonoBehaviour
         }
         Instancia = this;
     }
-
-    void Start()
+    IEnumerator Start()
     {
         ListaSoldadosA = new List<GameObject>();
         ListaSoldadosB = new List<GameObject>();
@@ -56,14 +57,15 @@ public class TurnoManager : MonoBehaviour
         max = LimiteDer.transform.position.x;
 
         if (textoNotificacionesUI != null) textoNotificacionesUI.text = "";
+        yield return StartCoroutine(InitializePartidaPorEquipos());
 
-        InitializePartidaPorEquipos();
         foreach (GameObject s in ListaSoldadosA) s.SetActive(true);
         foreach (GameObject s in ListaSoldadosB) s.SetActive(true);
 
         equipoQueLeToca = TipoEquipo.EquipoA;
         ActivarSiguienteEnCola();
     }
+
     void Update()
     {
         if (!temporizadorActivo || procesandoFaseMuertos) return;
@@ -116,10 +118,12 @@ public class TurnoManager : MonoBehaviour
 
         return false;
     }
+
     public void FinalizarTurno(GameObject ArmaUtilizada)
     {
         temporizadorActivo = false;
-        PanelInventario.Instancia.PermisoAtacar = false;
+        if (PanelInventario.Instancia != null)
+            PanelInventario.Instancia.PermisoAtacar = false;
 
         if (soldadoActivoEnEsteTurno != null)
         {
@@ -145,12 +149,16 @@ public class TurnoManager : MonoBehaviour
                 Destroy(ArmaUtilizada);
             }
         }
+
         if (VerificarFinDePartida())
         {
             return;
         }
+
         equipoQueLeToca = (equipoQueLeToca == TipoEquipo.EquipoA) ? TipoEquipo.EquipoB : TipoEquipo.EquipoA;
-        PanelInventario.Instancia.DibujarInventarioUI();
+        if (PanelInventario.Instancia != null)
+            PanelInventario.Instancia.DibujarInventarioUI();
+
         ActivarSiguienteEnCola();
     }
 
@@ -163,9 +171,10 @@ public class TurnoManager : MonoBehaviour
             GameObject soldadoCaido = listaMuertosPendientes[i];
             if (soldadoCaido == null) continue;
             Debug.Log($"[Fase Muertos] Enfocando a {soldadoCaido.name} por 3 segundos.");
-            MostrarNotificacion($"{soldadoCaido.name} cayó en combate y va a estallar."); // Adaptado al nuevo nombre
+            MostrarNotificacion($"{soldadoCaido.name} cayó en combate y va a estallar.");
             DesactivarSoldadoEspecifico(soldadoCaido);
-             var inputGusanoMuerto = soldadoCaido.GetComponent<PlayerInput>();
+
+            var inputGusanoMuerto = soldadoCaido.GetComponent<PlayerInput>();
             if (miCamara != null && inputGusanoMuerto != null)
             {
                 miCamara.ActualizarReferenciaInput(inputGusanoMuerto);
@@ -201,8 +210,11 @@ public class TurnoManager : MonoBehaviour
         {
             yield break;
         }
+
         equipoQueLeToca = (equipoQueLeToca == TipoEquipo.EquipoA) ? TipoEquipo.EquipoB : TipoEquipo.EquipoA;
-        PanelInventario.Instancia.DibujarInventarioUI();
+        if (PanelInventario.Instancia != null)
+            PanelInventario.Instancia.DibujarInventarioUI();
+
         ActivarSiguienteEnCola();
     }
 
@@ -211,17 +223,11 @@ public class TurnoManager : MonoBehaviour
         if (gusanoTarget == null) return;
         if (ListaSoldadosA.Contains(gusanoTarget)) ListaSoldadosA.Remove(gusanoTarget);
         if (ListaSoldadosB.Contains(gusanoTarget)) ListaSoldadosB.Remove(gusanoTarget);
+
         Vida vidaGusano = gusanoTarget.GetComponent<Vida>();
-        if (listaMuertosPendientes.Contains(gusanoTarget) && !gusanoTarget.activeInHierarchy)
-        {
-            listaMuertosPendientes.Remove(gusanoTarget);
-            MostrarNotificacion($"{gusanoTarget.name} voló fuera del mapa."); // Adaptado al nuevo nombre
-            Destroy(gusanoTarget);
-            return;
-        }
         if (vidaGusano == null || vidaGusano.vidaActual > 0 || !gusanoTarget.activeInHierarchy)
         {
-            MostrarNotificacion($"{gusanoTarget.name} cayó al vacío."); // Adaptado al nuevo nombre
+            MostrarNotificacion($"{gusanoTarget.name} voló fuera del mapa.");
             if (listaMuertosPendientes.Contains(gusanoTarget)) listaMuertosPendientes.Remove(gusanoTarget);
             Destroy(gusanoTarget);
             return;
@@ -241,20 +247,30 @@ public class TurnoManager : MonoBehaviour
     void ActivarSiguienteEnCola()
     {
         if (ListaSoldadosA.Count == 0 || ListaSoldadosB.Count == 0) return;
+
         soldadoActivoEnEsteTurno = (equipoQueLeToca == TipoEquipo.EquipoA) ? ListaSoldadosA[0] : ListaSoldadosB[0];
+
         if (soldadoActivoEnEsteTurno != null)
         {
             Debug.Log($"[TurnoManager] Turno de: {soldadoActivoEnEsteTurno.name} al frente de la cola ({equipoQueLeToca})");
             EnfocarSoldadoEspecifico(soldadoActivoEnEsteTurno);
+
             var mov = soldadoActivoEnEsteTurno.GetComponent<movimientoJugador>();
             if (mov != null)
             {
                 mov.atacando = false;
             }
+
             tiempoRestante = tiempoPorTurno;
             temporizadorActivo = true;
         }
+        else
+        {
+            RotarSoldadoAlFinal(soldadoActivoEnEsteTurno);
+            ActivarSiguienteEnCola();
+        }
     }
+
     public void MostrarNotificacion(string mensaje)
     {
         Debug.LogWarning($"[NOTIFICACIÓN]: {mensaje}");
@@ -272,8 +288,10 @@ public class TurnoManager : MonoBehaviour
         textoNotificacionesUI.text = "";
         corrutinaNotificacionActiva = null;
     }
-    void InitializePartidaPorEquipos()
+
+    IEnumerator InitializePartidaPorEquipos()
     {
+        Vector3 posicionSpawn = transform.position;
         for (int i = 0; i < cantidadSoldadosPorEquipo; i++)
         {
             GameObject nuevoSoldado = Instantiate(prefabEquipoA, transform.position, transform.rotation);
@@ -298,8 +316,8 @@ public class TurnoManager : MonoBehaviour
 
         BarajarLista(ListaSoldadosA);
         BarajarLista(ListaSoldadosB);
-        RandomizarPosicionLista(ListaSoldadosA);
-        RandomizarPosicionLista(ListaSoldadosB);
+        yield return StartCoroutine(RandomizarPosicionLista(ListaSoldadosA));
+        yield return StartCoroutine(RandomizarPosicionLista(ListaSoldadosB));
     }
 
     void RotarSoldadoAlFinal(GameObject soldado)
@@ -328,7 +346,11 @@ public class TurnoManager : MonoBehaviour
 
     void ConfigurarComponentesBase(GameObject soldado)
     {
-        soldado.transform.GetChild(0).gameObject.SetActive(false);
+        if (soldado.transform.childCount > 0)
+        {
+            soldado.transform.GetChild(0).gameObject.SetActive(false);
+        }
+
         var scriptMov = soldado.GetComponent<movimientoJugador>();
         if (scriptMov != null && scriptMov.barraFuerzaUI != null)
         {
@@ -348,34 +370,56 @@ public class TurnoManager : MonoBehaviour
         }
     }
 
-    void RandomizarPosicionLista(List<GameObject> lista)
+    IEnumerator RandomizarPosicionLista(List<GameObject> lista)
     {
+        yield return new WaitForSeconds(0.5f);
         for (int i = 0; i < lista.Count; i++)
         {
-            float randomX = UnityEngine.Random.Range(min, max);
+            float randomX = Random.Range(min, max);
             randomX = Mathf.Round(randomX * 10f) / 10f;
-            Vector3 nuevaPos = new Vector3(randomX, lista[i].transform.position.y, lista[i].transform.position.z);
+            float alturaInicialSegura = 50f;
+            Vector3 nuevaPos = new Vector3(randomX, alturaInicialSegura, lista[i].transform.position.z);
+
+            if (escaneadorMapa != null)
+            {
+                nuevaPos = escaneadorMapa.ObtenerPosicionSobreSuelo(nuevaPos, 0.4f);
+            }
             lista[i].transform.position = nuevaPos;
 
             Rigidbody2D rb = lista[i].GetComponent<Rigidbody2D>();
-            if (rb != null) rb.gravityScale = 1f;
+            if (rb != null)
+            {
+                rb.gravityScale = 1f;
+                rb.linearVelocity = Vector2.zero;
+            }
         }
     }
 
     void EnfocarSoldadoEspecifico(GameObject soldado)
     {
-        soldado.transform.GetChild(0).gameObject.SetActive(true);
+        if (soldado.transform.childCount > 0)
+        {
+            soldado.transform.GetChild(0).gameObject.SetActive(true);
+        }
         var input = soldado.GetComponent<PlayerInput>();
         if (input != null) input.enabled = true;
         var scriptMov = soldado.GetComponent<movimientoJugador>();
         if (scriptMov != null) scriptMov.enabled = true;
-        miCamara.ActualizarReferenciaInput(input);
+
+        if (miCamara != null)
+        {
+            miCamara.ActualizarReferenciaInput(input);
+        }
     }
 
     void DesactivarSoldadoEspecifico(GameObject soldado)
     {
         if (soldado == null) return;
-        soldado.transform.GetChild(0).gameObject.SetActive(false);
+
+        if (soldado.transform.childCount > 0)
+        {
+            soldado.transform.GetChild(0).gameObject.SetActive(false);
+        }
         var input = soldado.GetComponent<PlayerInput>();
         if (input != null) input.enabled = false;
         var scriptMov = soldado.GetComponent<movimientoJugador>();
@@ -384,35 +428,48 @@ public class TurnoManager : MonoBehaviour
 
     public IEnumerator TemporizadorCambioTurno(GameObject ArmaUtilizada)
     {
+        Debug.Log("[TurnoManager] Esperando a que las físicas se estabilicen...");
         yield return new WaitForSeconds(0.8f);
         while (!TodoElMundoEstaQuieto())
         {
-            yield return new WaitForSeconds(0.2f); 
+            yield return new WaitForSeconds(0.2f);
         }
+
+        Debug.Log("<color=green><b>[TurnoManager]CONFIRMADO! Todos los soldados están completamente quietos. Cambiando turno...</b></color>");
+
         yield return new WaitForSeconds(0.5f);
         FinalizarTurno(ArmaUtilizada);
     }
+
     private bool TodoElMundoEstaQuieto()
     {
-        foreach (GameObject soldado in ListaSoldadosA)
+        bool todosQuietos = true;
+        float umbralMicroMovimiento = 0.30f;
+        void RevisarFisicasYClavar(List<GameObject> lista)
         {
-            if (soldado == null) continue;
-            Rigidbody2D rb = soldado.GetComponent<Rigidbody2D>();
-            if (rb != null && (rb.linearVelocity.magnitude > 0.05f || Mathf.Abs(rb.angularVelocity) > 0.05f))
+            foreach (GameObject soldado in lista)
             {
-                return false;
-            }
-        }
-        foreach (GameObject soldado in ListaSoldadosB)
-        {
-            if (soldado == null) continue;
-            Rigidbody2D rb = soldado.GetComponent<Rigidbody2D>();
+                if (soldado == null) continue;
+                Rigidbody2D rb = soldado.GetComponent<Rigidbody2D>();
 
-            if (rb != null && (rb.linearVelocity.magnitude > 0.05f || Mathf.Abs(rb.angularVelocity) > 0.05f))
-            {
-                return false; 
+                if (rb != null)
+                {
+                    if (rb.linearVelocity.magnitude < umbralMicroMovimiento && Mathf.Abs(rb.angularVelocity) < umbralMicroMovimiento)
+                    {
+                        rb.linearVelocity = Vector2.zero;
+                        rb.angularVelocity = 0f;
+                    }
+                    if (rb.linearVelocity.magnitude > 0f || Mathf.Abs(rb.angularVelocity) > 0f)
+                    {
+                        todosQuietos = false;
+                    }
+                }
             }
         }
-        return true;
+
+        RevisarFisicasYClavar(ListaSoldadosA);
+        RevisarFisicasYClavar(ListaSoldadosB);
+
+        return todosQuietos;
     }
 }

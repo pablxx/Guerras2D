@@ -43,22 +43,33 @@ namespace DTerrain
         /// </summary>
         public virtual void SpawnChunks()
         {
-
             Chunks = new List<T>();
             chunkSizeX = OriginalTexture.width / ChunkCountX;
             chunkSizeY = OriginalTexture.height / ChunkCountY;
+
+            // OBTENEMOS EL ID DE LA CAPA "Piso" UNA SOLA VEZ PARA OPTIMIZAR
+            int capaPisoID = LayerMask.NameToLayer("Piso");
+            if (capaPisoID == -1)
+            {
+                Debug.LogWarning("[PaintableLayer] No se encontró la capa llamada 'Piso' en los Project Settings. Recuerda crearla.");
+            }
 
             for (int i = 0; i < ChunkCountX; i++)
             {
                 for (int j = 0; j < ChunkCountY; j++)
                 {
                     Texture2D piece = new Texture2D(chunkSizeX, chunkSizeY);
-                    piece.filterMode = filterMode; 
+                    piece.filterMode = filterMode;
                     piece.SetPixels(0, 0, chunkSizeX, chunkSizeY, OriginalTexture.GetPixels(i * chunkSizeX, j * chunkSizeY, chunkSizeX, chunkSizeY));
                     piece.Apply();
 
-
                     GameObject c = Instantiate(chunkTemplate);
+
+                    // 🔥 ¡AL GRANO!: ASIGNAMOS CADA CHUNK A LA CAPA "Piso"
+                    if (capaPisoID != -1)
+                    {
+                        c.layer = capaPisoID;
+                    }
 
                     c.name = $"Chunk{i * ChunkCountY + j}";
 
@@ -74,8 +85,8 @@ namespace DTerrain
                     pc.TextureSource.PPU = PPU;
 
                     SpriteRenderer sr = c.GetComponent<SpriteRenderer>();
-                    if(sr==null)
-                        sr=c.AddComponent<SpriteRenderer>();
+                    if (sr == null)
+                        sr = c.AddComponent<SpriteRenderer>();
 
                     c.transform.position = transform.position + new Vector3(i * (float)chunkSizeX / PPU, j * (float)chunkSizeY / PPU, 0);
                     c.transform.SetParent(transform);

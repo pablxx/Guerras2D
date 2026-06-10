@@ -15,6 +15,7 @@ public class Mina : Arma
     private Rigidbody2D rb;
     private bool estaArmada = false;
     private bool yaSeActivo = false;
+    
 
     private void Start()
     {
@@ -129,6 +130,7 @@ public class Mina : Arma
             {
                 vidaObjetivo.RecibirDanio(danioMaximo);
             }
+
             Rigidbody2D rbVictima = victima.GetComponent<Rigidbody2D>();
             if (rbVictima != null)
             {
@@ -138,7 +140,7 @@ public class Mina : Arma
                 rbVictima.AddForce(direccionEmpuje * fuerzaEmpuje, ForceMode2D.Impulse);
             }
         }
-        if (spriteMina != null) spriteMina.enabled = false;
+        if (spriteMina != null) spriteMina.enabled = false;    
         Destroy(gameObject, 0.1f);
     }
 

@@ -1502,6 +1502,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imagenIcono: {fileID: 2143096783}
   textoMunicion: {fileID: 1332403054}
+--- !u!1 &198384752
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 198384753}
+  m_Layer: 0
+  m_Name: InicioPartida
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &198384753
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198384752}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 49.744267, y: 57.9, z: -0.17015511}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &242385609
 GameObject:
   m_ObjectHideFlags: 0
@@ -1609,7 +1640,7 @@ MonoBehaviour:
   <ChunkCountX>k__BackingField: 1
   <ChunkCountY>k__BackingField: 1
   chunkTemplate: {fileID: 5194434684234072523, guid: 37c73454f27eef44b862eb12bd4ee2a3, type: 3}
-  <OriginalTexture>k__BackingField: {fileID: 2800000, guid: 3126d95259a12d34baa6610242387a98, type: 3}
+  <OriginalTexture>k__BackingField: {fileID: 2800000, guid: 81828241a0c9f6a4893ad91bf12a1f23, type: 3}
   <PPU>k__BackingField: 32
   filterMode: 0
   <SortingLayerID>k__BackingField: 0
@@ -7477,7 +7508,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cca46ae4c0560ec4cb0f919183e26880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ball: {fileID: 4377669944707833705, guid: 62a0c0b39dcaec94ab203f50d7542b2b, type: 3}
 --- !u!4 &1088468329
 Transform:
   m_ObjectHideFlags: 0
@@ -8512,7 +8542,7 @@ Transform:
   m_GameObject: {fileID: 1274230500}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 60, y: 40, z: -0.5093845}
+  m_LocalPosition: {x: 41, y: 40, z: -0.5093845}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10401,7 +10431,7 @@ MonoBehaviour:
   <ChunkCountX>k__BackingField: 64
   <ChunkCountY>k__BackingField: 64
   chunkTemplate: {fileID: 5194434684234072523, guid: 847a2e425730df3409385592b669f10a, type: 3}
-  <OriginalTexture>k__BackingField: {fileID: 2800000, guid: 3126d95259a12d34baa6610242387a98, type: 3}
+  <OriginalTexture>k__BackingField: {fileID: 2800000, guid: 81828241a0c9f6a4893ad91bf12a1f23, type: 3}
   <PPU>k__BackingField: 32
   filterMode: 0
   <SortingLayerID>k__BackingField: 0
@@ -10504,6 +10534,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1547208564}
+  - component: {fileID: 1547208566}
   - component: {fileID: 1547208565}
   m_Layer: 0
   m_Name: TurnosManager
@@ -10542,6 +10573,7 @@ MonoBehaviour:
   miCamara: {fileID: 519420033}
   prefabEquipoA: {fileID: 767975047060363812, guid: db7f162df77546746891538fe52f8777, type: 3}
   prefabEquipoB: {fileID: 767975047060363812, guid: b87a2d8ad7caf7848815d1f54108f676, type: 3}
+  escaneadorMapa: {fileID: 1547208566}
   cantidadSoldadosPorEquipo: 2
   colorEquipoA: {r: 0, g: 0.038576603, b: 1, a: 1}
   colorEquipoB: {r: 1, g: 0, b: 0, a: 1}
@@ -10556,6 +10588,23 @@ MonoBehaviour:
   equipoQueLeToca: 0
   listaMuertosPendientes: []
   procesandoFaseMuertos: 0
+--- !u!114 &1547208566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547208563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 153dfe43b22df3242a0f4dcbdf27e4b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  capaTerreno:
+    serializedVersion: 2
+    m_Bits: 64
+  rangoBusqueda: 100
+  offsetOrigenRayoY: 20
 --- !u!1 &1548029473
 GameObject:
   m_ObjectHideFlags: 0
@@ -11244,7 +11293,7 @@ Transform:
   m_GameObject: {fileID: 1686157845}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 40.1, y: 40, z: -0.5093845}
+  m_LocalPosition: {x: 9.4, y: 40, z: -0.5093845}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12089,6 +12138,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 247382996bc2e374c9ed60ad375d3969, type: 3}
   - {fileID: 8300000, guid: 1b62d726b398ad848ba3912d3ec27260, type: 3}
   - {fileID: 8300000, guid: 70579fa06e934084b94c89a4cacf8fbf, type: 3}
+  efectos: []
 --- !u!4 &1883363710
 Transform:
   m_ObjectHideFlags: 0
@@ -12452,7 +12502,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1918466887
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13274,3 +13324,4 @@ SceneRoots:
   - {fileID: 1744117468}
   - {fileID: 1952221373}
   - {fileID: 1883363710}
+  - {fileID: 198384753}
