@@ -40,3 +40,24 @@ MonoBehaviour:
   - datosBaseArma: {fileID: 11400000, guid: 8284663e752fed54d80d5503b928f353, type: 2}
     cantidadMunicion: 2
     esInfinita: 0
+  - datosBaseArma: {fileID: 11400000, guid: 82de6d70e03455c49a916571da3d6955, type: 2}
+    cantidadMunicion: 2
+    esInfinita: 0
+  - datosBaseArma: {fileID: 11400000, guid: 37dac1928dc581f459af1b135e74399d, type: 2}
+    cantidadMunicion: 2
+    esInfinita: 0
+  - datosBaseArma: {fileID: 11400000, guid: a8dd430d8f3c9d749ba424d610ead50e, type: 2}
+    cantidadMunicion: 2
+    esInfinita: 0
+  - datosBaseArma: {fileID: 11400000, guid: 12d533f0fdf536848bd63f3b2d75c84a, type: 2}
+    cantidadMunicion: 2
+    esInfinita: 0
+  - datosBaseArma: {fileID: 11400000, guid: 8e379ff4e5a25fc418c678b94919025b, type: 2}
+    cantidadMunicion: 2
+    esInfinita: 0
+  - datosBaseArma: {fileID: 11400000, guid: 9bcb1d8ba04070643ab56d46874a535a, type: 2}
+    cantidadMunicion: 2
+    esInfinita: 0
+  - datosBaseArma: {fileID: 11400000, guid: 1d1a01a8a9d556f41a79fea15b21619b, type: 2}
+    cantidadMunicion: 2
+    esInfinita: 0

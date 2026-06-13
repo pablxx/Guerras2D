@@ -9,12 +9,11 @@ public class TurnoManager : MonoBehaviour
     public static TurnoManager Instancia;
 
     [SerializeField] camaraMovimiento miCamara;
-    [SerializeField] private GameObject prefabEquipoA;
-    [SerializeField] private GameObject prefabEquipoB;
+    [SerializeField] private GameObject prefabPersonaje;
 
     [Header("Configuración de Partida")]
     [SerializeField] EscaneadorMapa escaneadorMapa;
-    [SerializeField] int cantidadSoldadosPorEquipo;
+    [SerializeField] public int cantidadSoldadosPorEquipo;
     [SerializeField] private Color colorEquipoA;
     [SerializeField] private Color colorEquipoB;
     [SerializeField] Transform LimiteIzq;
@@ -29,6 +28,8 @@ public class TurnoManager : MonoBehaviour
     private float tiempoRestante;
     private bool temporizadorActivo = false;
 
+    public string TipoSprite1;
+    public string TipoSprite2;
     public List<GameObject> ListaSoldadosA;
     public List<GameObject> ListaSoldadosB;
     public GameObject soldadoActivoEnEsteTurno;
@@ -48,9 +49,18 @@ public class TurnoManager : MonoBehaviour
             return;
         }
         Instancia = this;
+        PlayerInmortal jugadorInmortal = Object.FindFirstObjectByType<PlayerInmortal>();
+        if (jugadorInmortal != null)
+        {
+            TipoSprite1 = jugadorInmortal.faccionJugador1;
+            TipoSprite2 = jugadorInmortal.faccionJugador2;
+            cantidadSoldadosPorEquipo = jugadorInmortal.contadorSoldados;
+            jugadorInmortal.gameObject.SetActive(false);
+        }
     }
     IEnumerator Start()
     {
+        yield return new WaitForSeconds(0.5f);
         ListaSoldadosA = new List<GameObject>();
         ListaSoldadosB = new List<GameObject>();
         min = LimiteIzq.transform.position.x;
@@ -294,7 +304,9 @@ public class TurnoManager : MonoBehaviour
         Vector3 posicionSpawn = transform.position;
         for (int i = 0; i < cantidadSoldadosPorEquipo; i++)
         {
-            GameObject nuevoSoldado = Instantiate(prefabEquipoA, transform.position, transform.rotation);
+            GameObject nuevoSoldado = Instantiate(prefabPersonaje, transform.position, transform.rotation);
+            SoldadoVisual componenteVisual = nuevoSoldado.GetComponent<SoldadoVisual>();
+            componenteVisual.CambiarSpritePorCadena(TipoSprite1);           
             ConfigurarComponentesBase(nuevoSoldado);
             DatosJugador datos = nuevoSoldado.GetComponent<DatosJugador>();
             datos.equipoJugador = TipoEquipo.EquipoA;
@@ -305,7 +317,9 @@ public class TurnoManager : MonoBehaviour
 
         for (int i = 0; i < cantidadSoldadosPorEquipo; i++)
         {
-            GameObject nuevoSoldado = Instantiate(prefabEquipoB, transform.position, transform.rotation);
+            GameObject nuevoSoldado = Instantiate(prefabPersonaje, transform.position, transform.rotation);
+            SoldadoVisual componenteVisual = nuevoSoldado.GetComponent<SoldadoVisual>();
+            componenteVisual.CambiarSpritePorCadena(TipoSprite2);
             ConfigurarComponentesBase(nuevoSoldado);
             DatosJugador datos = nuevoSoldado.GetComponent<DatosJugador>();
             datos.equipoJugador = TipoEquipo.EquipoB;
@@ -472,4 +486,14 @@ public class TurnoManager : MonoBehaviour
 
         return todosQuietos;
     }
+
+    // ALEX ..........INTEGRAR TODAS LAS ANIMACIONES DEL PERSONAJE DENTRO DEL JUEGO (CAMINAR , SALTAR , SACAR ARMA , MUERTO)
+    // TANIA .........IMPLEMENTAR LA ANIMACION EN SELECCION DE EQUIPOS  , Y ANIMACION COMPLEMENTARIA A LAS ARMAS(TELETRANSPORTE Y QUEMANDOSE )
+    // OTTICH.........IMPLEMENTAR EFECTOS DE PARTICULAS A TODAS LAS ARMAS(DURANTE Y CUANDO LLEGA)
+    // GLORIA.........IMPLEMENTAR EFECTOS DE PARTICULAS A TODAS LAS ARMAS(CUANDO SALEN "EFECTO DISPARO")
+    // VALERIA........IU (PANTALLA DE CARGA , MAPAS ) GDD( CONCLUIRLO ) , PITCH (CREAR EL POSTER )
+    // VICTOR.........EFECTOS DE SONIDO (ANTES , DURANTE , CUANDO LLEGA.... CREAR SONIDOS DE  LAS ARMAS DISPONIBLES ) OGG
+    // ILSEN..........ANIMAR LA PANTALLA PRINCIPAL (EL TITULO ) ICONOS DE ARMAS (PRIORIDAD) , FONDOS PARA TODAS LAS ESCENAS
+    
+    // TODOS UNA MUSICA DE FONDO PARA EL JUEGO PRINCIPAL 
 }

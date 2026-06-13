@@ -8,10 +8,10 @@ using UnityEngine;
 
 namespace DTerrain
 {
-    public class PaintableLayer<T> : MonoBehaviour, ILayer<T> where T:PaintableChunk
+    public class PaintableLayer<T> : MonoBehaviour, ILayer<T> where T : PaintableChunk
     {
 
-        [field:SerializeField]
+        [field: SerializeField]
         public int ChunkCountX { get; set; }
         [field: SerializeField]
         public int ChunkCountY { get; set; }
@@ -22,10 +22,10 @@ namespace DTerrain
         [SerializeField]
         protected GameObject chunkTemplate;
 
-        [field:SerializeField]
+        [field: SerializeField]
         public Texture2D OriginalTexture { get; set; }
 
-        [field:SerializeField]
+        [field: SerializeField]
         public int PPU { get; protected set; }
 
         [SerializeField]
@@ -35,19 +35,44 @@ namespace DTerrain
         public int SortingLayerID { get; set; }
 
         public List<T> Chunks { get; private set; }
-
-
+        [Header("Configuración de Mapas")]
+        [SerializeField] private List<Sprite> listaSpritesMapas = new List<Sprite>();
 
         /// <summary>
         /// Spawns all chunks that are required for full functionality and adds them to the list named 'Chunks'.
         /// </summary>
         public virtual void SpawnChunks()
         {
+            PlayerInmortal jugador = FindFirstObjectByType<PlayerInmortal>();
+
+            if (jugador != null)
+            {
+
+                string mapaLimpio = jugador.mapaSeleccionado.Trim();
+                int indiceElegido = -1;
+
+                if (mapaLimpio == "Gobernacion") indiceElegido = 0;
+                else if (mapaLimpio == "Parque Cretacico") indiceElegido = 1;
+                else if (mapaLimpio == "Villa Tunari") indiceElegido = 2;
+                if (indiceElegido != -1 && listaSpritesMapas.Count > indiceElegido && listaSpritesMapas[indiceElegido] != null)
+                {
+                    OriginalTexture = listaSpritesMapas[indiceElegido].texture;
+                    Debug.Log($"[PaintableLayer] Textura de '{mapaLimpio}' inyectada correctamente de forma interna.");
+                }
+                else
+                {
+                    Debug.LogWarning("[PaintableLayer] No se encontró un sprite válido en la lista para el mapa seleccionado.");
+                }
+                jugador.enabled = false;
+                Debug.Log("[PaintableLayer] Input del PlayerInmortal desactivado para iniciar el combate.");
+            }
+            else
+            {
+                Debug.LogWarning("[PaintableLayer] PlayerInmortal no encontrado. Se usará la textura por defecto del inspector.");
+            }
             Chunks = new List<T>();
             chunkSizeX = OriginalTexture.width / ChunkCountX;
             chunkSizeY = OriginalTexture.height / ChunkCountY;
-
-            // OBTENEMOS EL ID DE LA CAPA "Piso" UNA SOLA VEZ PARA OPTIMIZAR
             int capaPisoID = LayerMask.NameToLayer("Piso");
             if (capaPisoID == -1)
             {
@@ -64,8 +89,6 @@ namespace DTerrain
                     piece.Apply();
 
                     GameObject c = Instantiate(chunkTemplate);
-
-                    // 🔥 ¡AL GRANO!: ASIGNAMOS CADA CHUNK A LA CAPA "Piso"
                     if (capaPisoID != -1)
                     {
                         c.layer = capaPisoID;
@@ -98,7 +121,7 @@ namespace DTerrain
 
         public virtual void InitChunks()
         {
-            foreach(PaintableChunk t in Chunks)
+            foreach (PaintableChunk t in Chunks)
             {
                 t.SortingLayerID = SortingLayerID;
                 t.Init();
@@ -123,7 +146,7 @@ namespace DTerrain
             int k = 0;
             foreach (Range r in paintingParameters.Shape.Ranges)
             {
-                PaintColumn(paintingParameters.Position.x + k, paintingParameters.Position.y+r.Min, r, paintingParameters);
+                PaintColumn(paintingParameters.Position.x + k, paintingParameters.Position.y + r.Min, r, paintingParameters);
                 k++;
             }
         }
@@ -137,7 +160,7 @@ namespace DTerrain
         /// <param name="c">Color to be painted</param>
         private void PaintColumn(int x, int y, Range r, PaintingParameters pp)
         {
-            
+
             int height = r.Length;
             //We don't use a method for getting chunk id because we need some variables
             int xchunk = x / chunkSizeX;
@@ -150,10 +173,10 @@ namespace DTerrain
             //Iterate over possible chunks vertically that can be contained in painting for this range
             while (true)
             {
-                
+
                 if (cid >= 0 && cid < Chunks.Count && k + ychunk < ChunkCountY && (k - 1) * chunkSizeY <= height)
                 {
-                    Chunks[cid].Paint(new RectInt(posInChunkX, posInChunkY - k * chunkSizeY, 1, r.Length+1), pp);
+                    Chunks[cid].Paint(new RectInt(posInChunkX, posInChunkY - k * chunkSizeY, 1, r.Length + 1), pp);
                     cid++;
                     k++;
                 }

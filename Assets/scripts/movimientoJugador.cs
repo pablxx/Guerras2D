@@ -139,10 +139,11 @@ public class movimientoJugador : MonoBehaviour
     {
         if (atacando)
         {
-            rb2d.linearVelocity = new Vector2(0f, rb2d.linearVelocity.y);
             return;
         }
+
         rb2d.linearVelocity = new Vector2(movimiento.x * velocidad, rb2d.linearVelocity.y);
+
         if (Mathf.Abs(movimiento.x) > 0.01f)
         {
             SubirEscalon();
@@ -278,6 +279,7 @@ public class movimientoJugador : MonoBehaviour
         camaraMovimiento scriptCam = Camera.main.GetComponent<camaraMovimiento>();
         if (scriptCam != null) scriptCam.EnfocarObjetivo(nuevaArma.transform);
     }
+    
 
     void EjecutarAtaqueClicMapa()
     {
