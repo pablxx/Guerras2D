@@ -77,6 +77,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Opciones",
+                    "type": "Button",
+                    "id": "5297da3b-823b-4fd5-98c8-152fe4f15b59",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -255,6 +264,17 @@
                     "action": "AjustarAngulo",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "f9e24518-5aee-4e25-a88c-bd7b53bdab72",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Opciones",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },

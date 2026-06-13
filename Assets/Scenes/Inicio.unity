@@ -605,13 +605,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d303eb962685072438fa3f29e5161cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  escenaObjetivo: 
+  tiempoCargaPersonalizado: 1.5
   vistaUI: {fileID: 1436275336}
   factorEscalaSeleccionado: 1.2
-  velocidadCambioUI: 12
+  velocidadEscalado: 12
   velocidadPalpitacionBoton: 0.3
   intensidadPalpitacionBoton: 0.3
   colorNormal: {r: 1, g: 1, b: 1, a: 1}
   colorSeleccionado: {r: 0, g: 0, b: 0, a: 1}
+  nombresEquipoA: []
+  nombresEquipoB: []
+  contadorSoldados: 0
+  dificultadSeleccionada: 
+  faccionJugador1: 
+  faccionJugador2: 
+  mapaSeleccionado: 
 --- !u!1 &368994253
 GameObject:
   m_ObjectHideFlags: 0
@@ -2035,7 +2044,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3997073990581583694, guid: 78b8ab0f0e528fb4db4797538f76f992, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 78b8ab0f0e528fb4db4797538f76f992, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

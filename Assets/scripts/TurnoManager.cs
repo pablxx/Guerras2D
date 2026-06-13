@@ -39,6 +39,8 @@ public class TurnoManager : MonoBehaviour
     public List<GameObject> listaMuertosPendientes = new List<GameObject>();
     public bool procesandoFaseMuertos = false;
     private Coroutine corrutinaNotificacionActiva;
+    string NombreEquipoA;
+    string NombreEquipoB;
 
 
     void Awake()
@@ -55,7 +57,8 @@ public class TurnoManager : MonoBehaviour
             TipoSprite1 = jugadorInmortal.faccionJugador1;
             TipoSprite2 = jugadorInmortal.faccionJugador2;
             cantidadSoldadosPorEquipo = jugadorInmortal.contadorSoldados;
-            jugadorInmortal.gameObject.SetActive(false);
+            NombreEquipoA = jugadorInmortal.nombresEquipoA[0];
+            NombreEquipoB = jugadorInmortal.nombresEquipoB[0];
         }
     }
     IEnumerator Start()
@@ -98,35 +101,80 @@ public class TurnoManager : MonoBehaviour
         }
     }
 
-    private bool VerificarFinDePartida()
+    private IEnumerator VerificarFinDePartidaSecuencia()
     {
-        if (ListaSoldadosA.Count == 0)
+        DesactivarSoldadoEspecifico(soldadoActivoEnEsteTurno);
+        if (ListaSoldadosA.Count == 0 && ListaSoldadosB.Count == 0)
         {
+            temporizadorActivo = false;
+            Debug.LogWarning("[TurnoManager] ¡EMPATE ABSOLUTO! Destrucción mutua");
+
+            if (textoNotificacionesUI != null)
+            {
+                if (corrutinaNotificacionActiva != null) StopCoroutine(corrutinaNotificacionActiva);
+                textoNotificacionesUI.text = "¡EMPATE! TODOS CAYERON EN COMBATE";
+            }
+            yield return new WaitForSeconds(3f);
+
+            GestionarResultados resultados = GetComponent<GestionarResultados>();
+            if (resultados != null)
+            {
+                resultados.MostrarResultados();
+            }
+            yield break;
+        }
+        if (ListaSoldadosA.Count == 0 && ListaSoldadosB.Count > 0)
+        {
+            temporizadorActivo = false;
             Debug.LogWarning("yeiiii por fin se acabo el juego.....quiero dormir :v");
 
             if (textoNotificacionesUI != null)
             {
                 if (corrutinaNotificacionActiva != null) StopCoroutine(corrutinaNotificacionActiva);
-                textoNotificacionesUI.text = "¡VICTORIA! GANÓ EL EQUIPO B";
+                textoNotificacionesUI.text = "VICTORIA! GANÓ EL EQUIPO " + NombreEquipoB;
             }
 
-            temporizadorActivo = false;
-            return true;
+            if (miCamara != null && ListaSoldadosB[0] != null)
+            {
+                var inputGanador = ListaSoldadosB[0].GetComponent<PlayerInput>();
+                miCamara.ActualizarReferenciaInput(inputGanador);
+            }
+
+            yield return new WaitForSeconds(3f);
+
+            GestionarResultados resultados = GetComponent<GestionarResultados>();
+            if (resultados != null)
+            {
+                resultados.MostrarResultados();
+            }
+            yield break;
         }
-        if (ListaSoldadosB.Count == 0)
+        if (ListaSoldadosB.Count == 0 && ListaSoldadosA.Count > 0)
         {
+            temporizadorActivo = false;
             Debug.LogWarning("yeiiii por fin se acabo el juego.....quiero dormir :v");
 
             if (textoNotificacionesUI != null)
             {
                 if (corrutinaNotificacionActiva != null) StopCoroutine(corrutinaNotificacionActiva);
-                textoNotificacionesUI.text = "¡VICTORIA! GANÓ EL EQUIPO A";
+                textoNotificacionesUI.text = "¡VICTORIA! GANÓ EL EQUIPO " + NombreEquipoA;
             }
-            temporizadorActivo = false;
-            return true;
-        }
 
-        return false;
+            if (miCamara != null && ListaSoldadosA[0] != null)
+            {
+                var inputGanador = ListaSoldadosA[0].GetComponent<PlayerInput>();
+                miCamara.ActualizarReferenciaInput(inputGanador);
+            }
+
+            yield return new WaitForSeconds(3f);
+
+            GestionarResultados resultados = GetComponent<GestionarResultados>();
+            if (resultados != null)
+            {
+                resultados.MostrarResultados();
+            }
+            yield break;
+        }
     }
 
     public void FinalizarTurno(GameObject ArmaUtilizada)
@@ -160,8 +208,9 @@ public class TurnoManager : MonoBehaviour
             }
         }
 
-        if (VerificarFinDePartida())
+        if (ListaSoldadosA.Count == 0 || ListaSoldadosB.Count == 0)
         {
+            StartCoroutine(VerificarFinDePartidaSecuencia());
             return;
         }
 
@@ -211,13 +260,14 @@ public class TurnoManager : MonoBehaviour
         Debug.Log("[Fase Muertos] Todos los caídos de este turno han detonado. Reanudando flujo de juego.");
         listaMuertosPendientes.Clear();
         procesandoFaseMuertos = false;
-
         if (armaParaLimpiar != null)
         {
             Destroy(armaParaLimpiar);
         }
-        if (VerificarFinDePartida())
+
+        if (ListaSoldadosA.Count == 0 || ListaSoldadosB.Count == 0)
         {
+            StartCoroutine(VerificarFinDePartidaSecuencia());
             yield break;
         }
 
@@ -231,6 +281,13 @@ public class TurnoManager : MonoBehaviour
     public void RegistrarMuerteJugador(GameObject gusanoTarget)
     {
         if (gusanoTarget == null) return;
+        if (listaMuertosPendientes.Contains(gusanoTarget) ||
+            (!ListaSoldadosA.Contains(gusanoTarget) && !ListaSoldadosB.Contains(gusanoTarget)))
+        {
+            return;
+        }
+        GestionarResultados resultados = GetComponent<GestionarResultados>();
+        resultados.ContabilizarBaja(gusanoTarget);
         if (ListaSoldadosA.Contains(gusanoTarget)) ListaSoldadosA.Remove(gusanoTarget);
         if (ListaSoldadosB.Contains(gusanoTarget)) ListaSoldadosB.Remove(gusanoTarget);
 
@@ -302,6 +359,7 @@ public class TurnoManager : MonoBehaviour
     IEnumerator InitializePartidaPorEquipos()
     {
         Vector3 posicionSpawn = transform.position;
+        PlayerInmortal jugadorInmortal = Object.FindFirstObjectByType<PlayerInmortal>();
         for (int i = 0; i < cantidadSoldadosPorEquipo; i++)
         {
             GameObject nuevoSoldado = Instantiate(prefabPersonaje, transform.position, transform.rotation);
@@ -310,7 +368,8 @@ public class TurnoManager : MonoBehaviour
             ConfigurarComponentesBase(nuevoSoldado);
             DatosJugador datos = nuevoSoldado.GetComponent<DatosJugador>();
             datos.equipoJugador = TipoEquipo.EquipoA;
-            string nombreParaCanvas = "Soldado " + (i + 1);
+            string nombreParaCanvas = jugadorInmortal.nombresEquipoA[i + 1];
+            nuevoSoldado.name = nombreParaCanvas;
             datos.ConfigurarTextoCanvas(nombreParaCanvas, colorEquipoA);
             ListaSoldadosA.Add(nuevoSoldado);
         }
@@ -323,11 +382,12 @@ public class TurnoManager : MonoBehaviour
             ConfigurarComponentesBase(nuevoSoldado);
             DatosJugador datos = nuevoSoldado.GetComponent<DatosJugador>();
             datos.equipoJugador = TipoEquipo.EquipoB;
-            string nombreParaCanvas = "Soldado " + (i + 1);
+            string nombreParaCanvas = jugadorInmortal.nombresEquipoB[i + 1];
+            nuevoSoldado.name = nombreParaCanvas;
             datos.ConfigurarTextoCanvas(nombreParaCanvas, colorEquipoB);
             ListaSoldadosB.Add(nuevoSoldado);
         }
-
+        jugadorInmortal.gameObject.SetActive(false);
         BarajarLista(ListaSoldadosA);
         BarajarLista(ListaSoldadosB);
         yield return StartCoroutine(RandomizarPosicionLista(ListaSoldadosA));

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,7 +20,7 @@ public class camaraMovimiento : MonoBehaviour
     private Vector3 posicionAntesDelClic;
     private float zoomAntesDelClic;
     private float zoomObjetivoCercano;
-    private bool haciendoZoomDeEnfoque = false; 
+    private bool haciendoZoomDeEnfoque = false;
     private bool regresandoAPosicionOriginal = false;
 
     void Start()
@@ -57,34 +57,37 @@ public class camaraMovimiento : MonoBehaviour
 
     void Update()
     {
-        if (playerInputJugador == null || mover == null) return;
 
-        movimiento = mover.ReadValue<Vector2>();
-        transform.Translate(new Vector3(movimiento.x, movimiento.y, 0) * velocidad * Time.deltaTime, Space.World);
-        if (centrar && objetivoTransform != null)
+        if (mover != null && playerInputJugador != null && playerInputJugador.enabled)
         {
-            Vector3 destino = new Vector3(objetivoTransform.position.x, objetivoTransform.position.y, transform.position.z);
-            transform.position = Vector3.Lerp(transform.position, destino, Seguimiento * Time.deltaTime);
-            if (Vector3.Distance(transform.position, destino) < 0.1f)
-            {
-                centrar = false;
-            }
+            movimiento = mover.ReadValue<Vector2>();
         }
-
+        else
+        {
+            movimiento = Vector2.zero;
+        }
         if (movimiento.magnitude > 0.1f)
         {
             centrar = false;
             haciendoZoomDeEnfoque = false;
             regresandoAPosicionOriginal = false;
         }
+        if (!centrar && !regresandoAPosicionOriginal && movimiento.magnitude > 0.1f)
+        {
+            transform.Translate(new Vector3(movimiento.x, movimiento.y, 0) * velocidad * Time.deltaTime, Space.World);
+        }
+        if (centrar && objetivoTransform != null)
+        {
+            Vector3 destino = new Vector3(objetivoTransform.position.x, objetivoTransform.position.y, transform.position.z);
+            transform.position = Vector3.Lerp(transform.position, destino, Seguimiento * Time.deltaTime);
+        }
 
-        float valorZoom = (zoom != null) ? zoom.ReadValue<float>() : 0;
+        float valorZoom = (zoom != null && playerInputJugador != null && playerInputJugador.enabled) ? zoom.ReadValue<float>() : 0;
         if (cam != null && cam.orthographic && valorZoom != 0 && !regresandoAPosicionOriginal && !haciendoZoomDeEnfoque)
         {
             cam.orthographicSize -= valorZoom * velocidadZoom * Time.deltaTime;
             cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, 2f, 20f);
         }
-
         if (cam != null)
         {
             if (haciendoZoomDeEnfoque)
@@ -106,10 +109,12 @@ public class camaraMovimiento : MonoBehaviour
                     transform.position = posicionAntesDelClic;
                     cam.orthographicSize = zoomAntesDelClic;
                     regresandoAPosicionOriginal = false;
+                    centrar = true;
                 }
             }
         }
     }
+
     public void DispararEnfoqueTemporal(Transform gusanitoActivo, float tiempoEspera, float nivelZoomCercano)
     {
         if (gusanitoActivo == null || cam == null) return;

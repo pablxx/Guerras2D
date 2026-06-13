@@ -25,6 +25,10 @@ public class PlayerInmortal : MonoBehaviour
     [SerializeField] private Color colorNormal = Color.white;
     [SerializeField] private Color colorSeleccionado = Color.green;
 
+    public List<string> nombresEquipoA = new List<string>(); 
+    public List<string> nombresEquipoB = new List<string>();
+
+
     [Header("Datos Guardados de la Partida")]
     public int contadorSoldados;
     public string dificultadSeleccionada;
@@ -338,7 +342,7 @@ public class PlayerInmortal : MonoBehaviour
         switch (indiceActual)
         {
             case 0: vistaUI.TextoDinamicoIntro.text = "Juega con un rival por turnos"; break;
-            case 1: vistaUI.TextoDinamicoIntro.text = "Configura opcines del juego "; break;
+            case 1: vistaUI.TextoDinamicoIntro.text = "Configura opciones del juego "; break;
             case 2: vistaUI.TextoDinamicoIntro.text = "¿Ya te vas?"; break;
             default: vistaUI.TextoDinamicoIntro.text = ""; break;
         }

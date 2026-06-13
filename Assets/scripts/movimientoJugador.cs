@@ -23,6 +23,7 @@ public class movimientoJugador : MonoBehaviour
     InputAction atacar;
     InputAction inventario;
     InputAction ajustarAngulo;
+    InputAction opciones;
     Rigidbody2D rb2d;
     Vector2 movimiento;
     float anguloActual = 0f;
@@ -47,6 +48,7 @@ public class movimientoJugador : MonoBehaviour
         atacar = input.actions.FindAction("Atacar");
         inventario = input.actions.FindAction("Inventario");
         ajustarAngulo = input.actions.FindAction("AjustarAngulo");
+        opciones = input.actions.FindAction("Opciones");
 
         AlternarMira(true);
         barraFuerzaUI.gameObject.SetActive(false);
@@ -80,6 +82,9 @@ public class movimientoJugador : MonoBehaviour
             {
                 PanelInventario.Instancia.InventarioActivo = false;
             }
+        }
+        if (opciones.WasPressedThisFrame()){ 
+            
         }
 
         Apuntar();

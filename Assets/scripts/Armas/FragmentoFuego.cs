@@ -26,6 +26,7 @@ public class FragmentoFuego : MonoBehaviour
     private float fuerzaEmpujeBruta;
 
     private DTerrain.ClickAndDestroyOptimized destructorTerrain;
+    private ParticleSystem sistemaParticulasAsignado = null;
 
     public void InicializarFragmento(SecuenciadorMolotov spawnerPadre, bool esElUltimoMisil, float tiempoMecha)
     {
@@ -44,6 +45,12 @@ public class FragmentoFuego : MonoBehaviour
         destructorTerrain = Object.FindFirstObjectByType<DTerrain.ClickAndDestroyOptimized>();
 
         direccionActual = Vector3.down;
+
+        if (prefabEfectoPolvo != null)
+        {
+            GameObject clonEfecto = Instantiate(prefabEfectoPolvo, transform.position, Quaternion.identity, transform);
+            sistemaParticulasAsignado = clonEfecto.GetComponent<ParticleSystem>();
+        }
 
         StartCoroutine(RutinaCicloDeVidaFuego());
     }
@@ -93,11 +100,6 @@ public class FragmentoFuego : MonoBehaviour
                     destructorTerrain.EjecutarDestruccion(transform.position);
                 }
 
-                if (prefabEfectoPolvo != null)
-                {
-                    Instantiate(prefabEfectoPolvo, transform.position, Quaternion.identity);
-                }
-
                 temporizadorDestruccion = 0f;
             }
             temporizadorDanioSeco += Time.deltaTime;
@@ -113,6 +115,12 @@ public class FragmentoFuego : MonoBehaviour
         }
         if (GetComponent<SpriteRenderer>() != null) GetComponent<SpriteRenderer>().enabled = false;
 
+        if (sistemaParticulasAsignado != null)
+        {
+            var emision = sistemaParticulasAsignado.emission;
+            emision.enabled = false;
+        }
+
         if (soyElUltimo && TurnoManager.Instancia != null && miSecuenciador != null)
         {
             Debug.Log("[Lluvia Fuego] Último mini-taladro caótico terminado. Cambiando turno.");
@@ -120,7 +128,7 @@ public class FragmentoFuego : MonoBehaviour
             TurnoManager.Instancia.StartCoroutine(TurnoManager.Instancia.TemporizadorCambioTurno(null));
         }
 
-        Destroy(gameObject, 0.1f);
+        Destroy(gameObject, 1.5f);
     }
 
     private void AplicarPulsoDanioSeco(Vector3 centro)
@@ -132,7 +140,7 @@ public class FragmentoFuego : MonoBehaviour
             Vida vidaObjetivo = col.GetComponent<Vida>();
 
             if (vidaObjetivo != null)
-            {               
+            {
                 float danioFinal = miSecuenciador != null ? miSecuenciador.ObtenerDanioMaximo() : danioCalculado;
 
                 if (danioFinal > 0)

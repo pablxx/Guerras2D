@@ -104,7 +104,7 @@ MonoBehaviour:
   velocidadExcavacionSuelo: 0.1
   frecuenciaDestruccion: 0.05
   elevacionImpacto: 0.3
-  prefabEfectoPolvo: {fileID: 0}
+  prefabEfectoPolvo: {fileID: 7554100862250094614, guid: a71936a7edd239f45948e2bbb91c017e, type: 3}
   capaTerreno:
     serializedVersion: 2
     m_Bits: 64
