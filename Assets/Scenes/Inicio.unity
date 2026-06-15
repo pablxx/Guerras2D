@@ -1755,8 +1755,8 @@ MonoBehaviour:
   canalEfectos: {fileID: 1417460990}
   canalDestrucciones: {fileID: 1417460989}
   canalVoces: {fileID: 1417460994}
-  volumenMusica: 0.241
-  volumenEfectos: 0.46
+  volumenMusica: 0.175
+  volumenEfectos: 0.367
   volumenVoces: 0.912
   listaMusicas:
   - {fileID: 8300000, guid: 7b2f7b290b39aec43917482658656d21, type: 3}
@@ -1771,6 +1771,8 @@ MonoBehaviour:
   efectos:
   - {fileID: 8300000, guid: 8d990b5cdf608b34d87cdd1fdc6a39f7, type: 3}
   - {fileID: 8300000, guid: d27d699ab03d78f4caaad18012aa0414, type: 3}
+  - {fileID: 8300000, guid: 7be1103ae3a0f3f4ba2b915fc29ea855, type: 3}
+  - {fileID: 8300000, guid: 7cd8a20fa43777b4a804f04d60eee585, type: 3}
   efectosUI:
   - {fileID: 8300000, guid: 96be4db372b55b7449598ee4a2e9b3c3, type: 3}
   - {fileID: 8300000, guid: 48c0ac2ed6e9d5b439fd6792c2ca3ebb, type: 3}
@@ -1806,9 +1808,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c4524371f09efe24fa68c6710363f832, type: 3}
   - {fileID: 8300000, guid: 6a82f69aa8e1d7e4ab8b941668f77a0b, type: 3}
   - {fileID: 8300000, guid: 80c8663bf31cf394f80cab656580593e, type: 3}
-  vocesMuerte:
-  - {fileID: 8300000, guid: c8bacdb465e5c0b4f8ae7a13c1976fcf, type: 3}
-  - {fileID: 8300000, guid: c0e0803fe7b3de649a923ed7231b48ea, type: 3}
+  vocesMuerte: []
 --- !u!4 &1417460993
 Transform:
   m_ObjectHideFlags: 0
