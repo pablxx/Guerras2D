@@ -1,0 +1,612 @@
+fileFormatVersion: 2
+guid: 6a8543b5814420a4e9d505b7527af234
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 250
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: dc3b04e54fc12e34783def7b391bb55f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
+  multiSpriteImportData: []
+  layeredSpriteImportData:
+  - name: manoDerecho
+    originalName: 
+    pivot: {x: 0.54164606, y: 0.8968614}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 129
+      y: 711
+      width: 54
+      height: 51
+    spriteID: 98cb7b64d180ad044895cfbe5e7b258f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 129, y: 711}
+    spritePosition: {x: 181, y: 213}
+  - name: ojoDerecho
+    originalName: 
+    pivot: {x: 0.5219671, y: 0.27722257}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 632
+      width: 117
+      height: 137
+    spriteID: 50b81d4c5fc794c429ac28ec7aef8683
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 632}
+    spritePosition: {x: 104, y: 325}
+  - name: ojoIzquierdo
+    originalName: 
+    pivot: {x: 0.5229477, y: 0.2661167}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 777
+      width: 98
+      height: 125
+    spriteID: 7f8cb6327465e2742b115fd673e29ea4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 777}
+    spritePosition: {x: 21, y: 339}
+  - name: boca
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 129
+      y: 770
+      width: 91
+      height: 28
+    spriteID: 27cf7ad1682b9e14dbeccbc6f258bed0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 129, y: 770}
+    spritePosition: {x: 67, y: 296}
+  - name: manoDER1
+    originalName: 
+    pivot: {x: 0.82845384, y: 0.76914954}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 129
+      y: 632
+      width: 71
+      height: 71
+    spriteID: 17861dec580015f43b7ab5f9f1d946cc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 129, y: 632}
+    spritePosition: {x: 170, y: 0}
+  - name: manoIZQ1
+    originalName: 
+    pivot: {x: 0.5682705, y: 0.11058345}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 426
+      y: 128
+      width: 80
+      height: 66
+    spriteID: 9a200bd1f4576854bb98806a039379c3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 426, y: 128}
+    spritePosition: {x: 9, y: 12}
+  - name: casco
+    originalName: 
+    pivot: {x: 0.52330977, y: 0.4009419}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 317
+      height: 240
+    spriteID: 38d51ca226bb51141b3398770c96442f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 2, y: 346}
+  - name: cabeza
+    originalName: 
+    pivot: {x: 0.49620554, y: 0.03904923}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 252
+      width: 254
+      height: 230
+    spriteID: 2dd3aed13992b7c4ebe6e9c0d76101b7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 252}
+    spritePosition: {x: 23, y: 278}
+  - name: ropa
+    originalName: 
+    pivot: {x: 0.48840785, y: 0.94594014}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 490
+      width: 194
+      height: 134
+    spriteID: f9a8d0bed9437994a820a7c3bc47464e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 490}
+    spritePosition: {x: 63, y: 197}
+  - name: cuerpo
+    originalName: 
+    pivot: {x: 0.527381, y: 0.07071856}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 329
+      y: 4
+      width: 176
+      height: 116
+    spriteID: 125be895e0328ba41baa74529a85a29f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 329, y: 4}
+    spritePosition: {x: 71, y: 203}
+  - name: manoIzquierda
+    originalName: 
+    pivot: {x: 0.8007628, y: 0.792711}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 191
+      y: 711
+      width: 47
+      height: 45
+    spriteID: d4dc5c443171a894a8a6e785b052a34a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 191, y: 711}
+    spritePosition: {x: 56, y: 237}
+  - name: pieIzquierdo
+    originalName: 
+    pivot: {x: 0.6155128, y: 0.8748131}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 330
+      y: 128
+      width: 89
+      height: 72
+    spriteID: fe24c60e12b43ba498ea8d37df0d056e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 329, y: 128}
+    spritePosition: {x: 65, y: 180}
+  - name: pieDerecho
+    originalName: 
+    pivot: {x: 0.40172952, y: 0.8660031}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 910
+      width: 85
+      height: 79
+    spriteID: dc1ddbf21f87d1d44be8e19677727486
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 910}
+    spritePosition: {x: 156, y: 173}
+  spriteImportData: []
+  rigSpriteImportData: []
+  sharedRigSpriteImportData: []
+  mosaicSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Android
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: iPhone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  mosaicLayers: 1
+  characterMode: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  layerMappingOption: 2
+  generatePhysicsShape: 0
+  paperDollMode: 0
+  keepDupilcateSpriteName: 1
+  padding: 4
+  spriteSizeExpand: 0
+  skeletonAssetReferenceID: 
+  pipeline: {instanceID: 0}
+  pipelineVersion: 
+  spriteCategoryList:
+    categories: []
+  spritePackingTag: 
+  resliceFromLayer: 0
+  pSDLayerImportSetting: []
+  psdLayers:
+  - name: manoDerecho
+    spriteName: manoDerecho
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 98cb7b64d180ad044895cfbe5e7b258f
+    layerID: 144
+    mosaicPosition: {x: 129, y: 711}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: ojoDerecho
+    spriteName: ojoDerecho
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 50b81d4c5fc794c429ac28ec7aef8683
+    layerID: 130
+    mosaicPosition: {x: 4, y: 632}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: ojoIzquierdo
+    spriteName: ojoIzquierdo
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 7f8cb6327465e2742b115fd673e29ea4
+    layerID: 124
+    mosaicPosition: {x: 4, y: 777}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: boca
+    spriteName: boca
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 27cf7ad1682b9e14dbeccbc6f258bed0
+    layerID: 118
+    mosaicPosition: {x: 129, y: 770}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: manoDER1
+    spriteName: manoDER1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 17861dec580015f43b7ab5f9f1d946cc
+    layerID: 115
+    mosaicPosition: {x: 129, y: 632}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: manoIZQ1
+    spriteName: manoIZQ1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 9a200bd1f4576854bb98806a039379c3
+    layerID: 91
+    mosaicPosition: {x: 426, y: 128}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: casco
+    spriteName: casco
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 38d51ca226bb51141b3398770c96442f
+    layerID: 67
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: cabeza
+    spriteName: cabeza
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 2dd3aed13992b7c4ebe6e9c0d76101b7
+    layerID: 57
+    mosaicPosition: {x: 4, y: 252}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: ropa
+    spriteName: ropa
+    isGroup: 0
+    parentIndex: -1
+    spriteID: f9a8d0bed9437994a820a7c3bc47464e
+    layerID: 47
+    mosaicPosition: {x: 4, y: 490}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: cuerpo
+    spriteName: cuerpo
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 125be895e0328ba41baa74529a85a29f
+    layerID: 40
+    mosaicPosition: {x: 329, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: manoIzquierda
+    spriteName: manoIzquierda
+    isGroup: 0
+    parentIndex: -1
+    spriteID: d4dc5c443171a894a8a6e785b052a34a
+    layerID: 34
+    mosaicPosition: {x: 191, y: 711}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: pieIzquierdo
+    spriteName: pieIzquierdo
+    isGroup: 0
+    parentIndex: -1
+    spriteID: fe24c60e12b43ba498ea8d37df0d056e
+    layerID: 20
+    mosaicPosition: {x: 329, y: 128}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: pieDerecho
+    spriteName: pieDerecho
+    isGroup: 0
+    parentIndex: -1
+    spriteID: dc1ddbf21f87d1d44be8e19677727486
+    layerID: 10
+    mosaicPosition: {x: 4, y: 910}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  mosaicPSDLayers: []
+  rigPSDLayers: []
+  sharedRigPSDLayers: []
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  spriteSizeExpandChanged: 0
+  generateGOHierarchy: 0
+  textureAssetName: 
+  prefabAssetName: 
+  spriteLibAssetName: 
+  skeletonAssetName: 
+  secondarySpriteTextures: []

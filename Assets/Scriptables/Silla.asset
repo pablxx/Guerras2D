@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tipo: 0
   NombreArma: Silla
-  Icono: {fileID: 21300000, guid: e03a80d9ce9e79b4092cd8a3ef122a86, type: 3}
+  Icono: {fileID: 21300000, guid: 4c201ed60763fa04ca88bf46f30eff86, type: 3}
   Descripcion: Mitica silla que lanzaron a Evo
   RadioExplosion: 30
-  RadioDanio: 0
+  RadioDanio: 1
   DanioMaximo: 50
   FuerzaEmpuje: 10
-  PrefabArma: {fileID: 5101046581356328670, guid: f711df63d4c8b9345a2a9775879314ca, type: 3}
+  PrefabArma: {fileID: 2502227960697875013, guid: 5ac7783cf7d63c945b4b1bbb37a9c569, type: 3}
   Temporizador: 1
   TiempoExplosion: 1
   Rafagas: 0
-  AudioInstancia: {fileID: 0}
+  AudioInstancia: {fileID: 8300000, guid: ae95ab87b5443854dbe4e3224a87df3d, type: 3}

@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: "Assets/Scenes/presentaci\xF3n.unity"
+    guid: 62c6e4b110d9b78498ed4191fd54cda8
+  - enabled: 1
     path: Assets/Scenes/Inicio.unity
     guid: a0ae4a253a935054982a53be657fbb0a
   - enabled: 1

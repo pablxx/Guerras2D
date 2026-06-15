@@ -25,9 +25,9 @@ public class PlayerInmortal : MonoBehaviour
     [SerializeField] private Color colorNormal = Color.white;
     [SerializeField] private Color colorSeleccionado = Color.green;
 
-    public List<string> nombresEquipoA = new List<string>(); 
+    [Header("Listas de Equipos")]
+    public List<string> nombresEquipoA = new List<string>();
     public List<string> nombresEquipoB = new List<string>();
-
 
     [Header("Datos Guardados de la Partida")]
     public int contadorSoldados;
@@ -49,6 +49,17 @@ public class PlayerInmortal : MonoBehaviour
 
     private void Awake()
     {
+        PlayerInmortal[] managersActivos = Object.FindObjectsByType<PlayerInmortal>(FindObjectsSortMode.None);
+
+        foreach (PlayerInmortal manager in managersActivos)
+        {
+            if (manager != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
+        }
+
         DontDestroyOnLoad(gameObject);
     }
 
@@ -125,6 +136,11 @@ public class PlayerInmortal : MonoBehaviour
         if (!juegoIniciado)
         {
             juegoIniciado = true;
+            if (AudioManager.Instancia != null)
+            {
+                AudioManager.Instancia.PlaySFXPorIndice(0);
+                AudioManager.Instancia.ReproducirMusicaPorIndice(Random.Range(0, 2));
+            }
             if (vistaUI != null) vistaUI.LevantarMenuPrincipal();
         }
         else
@@ -143,6 +159,10 @@ public class PlayerInmortal : MonoBehaviour
                 if (indiceActual == 0)
                 {
                     Debug.Log("[PlayerInmortal] ¡ORDEN CONFIRMADA! Llamando a CargarEscenaCrearPartida().");
+                    if (AudioManager.Instancia != null)
+                    {
+                        AudioManager.Instancia.PlayUIPorIndice(7);
+                    }
                     vistaUI.CargarEscenaCrearPartida();
                 }
             }
@@ -156,24 +176,40 @@ public class PlayerInmortal : MonoBehaviour
     public void OnArriba(InputValue value)
     {
         if (!value.isPressed || !enabled) return;
+        if (AudioManager.Instancia != null)
+        {
+            AudioManager.Instancia.PlayUIPorIndice(1);
+        }
         ProcesarCambioIndice(-1);
     }
 
     public void OnAbajo(InputValue value)
     {
         if (!value.isPressed || !enabled) return;
+        if (AudioManager.Instancia != null)
+        {
+            AudioManager.Instancia.PlayUIPorIndice(1);
+        }
         ProcesarCambioIndice(1);
     }
 
     public void OnDerecha(InputValue value)
     {
         if (!value.isPressed || !enabled) return;
+        if (AudioManager.Instancia != null)
+        {
+            AudioManager.Instancia.PlayUIPorIndice(1);
+        }
         ProcesarCambioIndice(1);
     }
 
     public void OnIzquierda(InputValue value)
     {
         if (!value.isPressed || !enabled) return;
+        if (AudioManager.Instancia != null)
+        {
+            AudioManager.Instancia.PlayUIPorIndice(1);
+        }
         ProcesarCambioIndice(-1);
     }
 

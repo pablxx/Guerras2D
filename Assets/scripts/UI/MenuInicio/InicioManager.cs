@@ -34,12 +34,10 @@ public class InicioManager : MonoBehaviour
     private Coroutine corrutinaPalpitacion;
 
     public ConfigBoton[] MisBotones => misBotones;
-    public TextMeshProUGUI TextoDinamicoIntro => textoDinamicoIntro; 
+    public TextMeshProUGUI TextoDinamicoIntro => textoDinamicoIntro;
 
     private void Start()
     {
-        if (panelMenuPrincipal != null) panelMenuPrincipal.SetActive(true);
-
         if (scriptJugador == null)
         {
             scriptJugador = Object.FindFirstObjectByType<PlayerInmortal>();
@@ -50,6 +48,8 @@ public class InicioManager : MonoBehaviour
             scriptJugador.ActualizarReferenciaVista(this);
             scriptJugador.enabled = false;
         }
+
+        if (panelMenuPrincipal != null) panelMenuPrincipal.SetActive(true);
 
         if (textoDinamicoIntro != null)
         {
@@ -137,6 +137,9 @@ public class InicioManager : MonoBehaviour
     public void CargarEscenaCrearPartida()
     {
         PlayerInmortal jugador = Object.FindFirstObjectByType<PlayerInmortal>();
-        jugador.CambiarEscenaConCarga("CrearPartida", 0.2f);
+        if (jugador != null)
+        {
+            jugador.CambiarEscenaConCarga("CrearPartida", 0.2f);
+        }
     }
 }

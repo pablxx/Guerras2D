@@ -56,8 +56,8 @@ MonoBehaviour:
     cantidadMunicion: 2
     esInfinita: 0
   - datosBaseArma: {fileID: 11400000, guid: 9bcb1d8ba04070643ab56d46874a535a, type: 2}
-    cantidadMunicion: 2
+    cantidadMunicion: 10
     esInfinita: 0
   - datosBaseArma: {fileID: 11400000, guid: 1d1a01a8a9d556f41a79fea15b21619b, type: 2}
-    cantidadMunicion: 2
+    cantidadMunicion: 10
     esInfinita: 0

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArmaDinamitaDTerrain : Arma
+public class Dinamita : Arma
 {
     [Header("Configuración Visual (Ajustes de Prefab)")]
     [SerializeField] private float elevacionExplosion = 0.5f;

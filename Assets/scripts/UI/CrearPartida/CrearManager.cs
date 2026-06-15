@@ -86,6 +86,7 @@ public class CrearManager : MonoBehaviour
     {
         PlayerInmortal jugador = Object.FindFirstObjectByType<PlayerInmortal>();
         if (jugador != null) jugador.DesactivarPantallaConfiguracion();
+        AudioManager.Instancia.PlayUIPorIndice(0);
         SceneManager.LoadScene("Inicio");
     }
 
@@ -96,6 +97,7 @@ public class CrearManager : MonoBehaviour
             valorPrimerTexto--;
             ActualizarPantallaVisual();
         }
+        AudioManager.Instancia.PlayUIPorIndice(2);
     }
 
     public void AccionSumarPrimerTexto()
@@ -105,6 +107,7 @@ public class CrearManager : MonoBehaviour
             valorPrimerTexto++;
             ActualizarPantallaVisual();
         }
+        AudioManager.Instancia.PlayUIPorIndice(2);
     }
 
     public void AccionAnteriorSegundoTexto()
@@ -112,6 +115,7 @@ public class CrearManager : MonoBehaviour
         indiceDificultadActual--;
         if (indiceDificultadActual < 0) indiceDificultadActual = opcionesDificultad.Length - 1;
         ActualizarPantallaVisual();
+        AudioManager.Instancia.PlayUIPorIndice(2);
     }
 
     public void AccionSiguienteSegundoTexto()
@@ -119,6 +123,7 @@ public class CrearManager : MonoBehaviour
         indiceDificultadActual++;
         if (indiceDificultadActual >= opcionesDificultad.Length) indiceDificultadActual = 0;
         ActualizarPantallaVisual();
+        AudioManager.Instancia.PlayUIPorIndice(2);
     }
 
     public void AccionAnteriorPerfilJ1()
@@ -126,6 +131,7 @@ public class CrearManager : MonoBehaviour
         indicePersonajeJ1--;
         if (indicePersonajeJ1 < 0) indicePersonajeJ1 = opcionesPersonajes.Length - 1;
         ActualizarPantallaVisual();
+        AudioManager.Instancia.PlayUIPorIndice(3);
     }
 
     public void AccionSiguientePerfilJ1()
@@ -133,6 +139,7 @@ public class CrearManager : MonoBehaviour
         indicePersonajeJ1++;
         if (indicePersonajeJ1 >= opcionesPersonajes.Length) indicePersonajeJ1 = 0;
         ActualizarPantallaVisual();
+        AudioManager.Instancia.PlayUIPorIndice(3);
     }
 
     public void AccionAnteriorPerfilJ2()
@@ -140,7 +147,7 @@ public class CrearManager : MonoBehaviour
         indicePersonajeJ2--;
         if (indicePersonajeJ2 < 0) indicePersonajeJ2 = opcionesPersonajes.Length - 1;
         ActualizarPantallaVisual();
-        Debug.Log($"[CrearManager] Jugador 2 retrocedió a: {opcionesPersonajes[indicePersonajeJ2]}");
+        AudioManager.Instancia.PlayUIPorIndice(3);
     }
 
     public void AccionSiguientePerfilJ2()
@@ -148,13 +155,14 @@ public class CrearManager : MonoBehaviour
         indicePersonajeJ2++;
         if (indicePersonajeJ2 >= opcionesPersonajes.Length) indicePersonajeJ2 = 0;
         ActualizarPantallaVisual();
-        Debug.Log($"[CrearManager] Jugador 2 avanzó a: {opcionesPersonajes[indicePersonajeJ2]}");
+        AudioManager.Instancia.PlayUIPorIndice(3);
     }
 
     public void AccionBotonNombresAbrirVentana()
     {
         if (panelPrincipal != null && panelNombresEquipos != null)
         {
+            AudioManager.Instancia.PlayUIPorIndice(5);
             panelPrincipal.SetActive(false);
             panelNombresEquipos.SetActive(true);
             Debug.Log("[CrearManager] Ventana auxiliar de nombres abierta.");
@@ -169,6 +177,7 @@ public class CrearManager : MonoBehaviour
 
     public void VolverAlMenuPrincipal()
     {
+        AudioManager.Instancia.PlayUIPorIndice(6);
         if (panelPrincipal != null && panelNombresEquipos != null)
         {
             PlayerInmortal jugadorInmortal = Object.FindFirstObjectByType<PlayerInmortal>();
@@ -229,13 +238,13 @@ public class CrearManager : MonoBehaviour
     public void AccionBotonGO()
     {
         PlayerInmortal jugadorInmortal = Object.FindFirstObjectByType<PlayerInmortal>();
-
         if (jugadorInmortal != null)
         {
             if (jugadorInmortal.nombresEquipoA.Count == 0 || jugadorInmortal.nombresEquipoB.Count == 0)
             {
+                AudioManager.Instancia.PlayUIPorIndice(8);
                 if (textoAdvertenciaNombres != null)
-                {
+                {               
                     StopAllCoroutines();
                     StartCoroutine(MostrarYDesvanecerAdvertencia());
                 }
@@ -248,6 +257,7 @@ public class CrearManager : MonoBehaviour
             string faccionJ2 = opcionesPersonajes[indicePersonajeJ2];
             jugadorInmortal.AlmacenarDatosPartida(contador, dificultad, faccionJ1, faccionJ2);
             jugadorInmortal.DesactivarPantallaConfiguracion();
+            AudioManager.Instancia.PlayUIPorIndice(7);
             jugadorInmortal.CambiarEscenaConCarga("Mapas", 0.3f);
         }
     }

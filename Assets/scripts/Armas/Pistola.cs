@@ -5,10 +5,15 @@ using UnityEngine;
 public class Pistola : Arma
 {
     [SerializeField] float velocidadBala = 15f;
+    [Header("Efecto del disparo")]
+    [SerializeField] GameObject particulaDisparo;
+    [Header("Impacto con terreno")]
+    [SerializeField] GameObject particulaTierra;
     [Header("Duración máxima del proyectil")]
     [SerializeField] float tiempoMaximoVida = 2f;
     [Header("Tiempo de espera entre cada disparo")]
     [SerializeField] float tiempoEntreBalas = 0.15f;
+
 
     private Vector3 posicionOrigenMemorizada;
     private Quaternion rotacionOrigenMemorizada;
@@ -56,7 +61,21 @@ public class Pistola : Arma
             Debug.Log($"[Bala] Disparo ráfaga {i + 1} de {rafagas}");
             transform.position = posicionOrigenMemorizada;
             transform.rotation = rotacionOrigenMemorizada;
+            if (particulaDisparo != null)
+            {
+                float angulo = Mathf.Atan2(
+    direccionDisparoMemorizada.y,
+    direccionDisparoMemorizada.x) * Mathf.Rad2Deg;
 
+                Quaternion rotacionEfecto = Quaternion.Euler(0, 0, angulo);
+
+                GameObject efecto = Instantiate(
+                    particulaDisparo,
+                    posicionOrigenMemorizada,
+                    rotacionEfecto);
+
+                Destroy(efecto, 1f);
+            }
             if (miSpriteRenderer != null)
             {
                 miSpriteRenderer.enabled = true;
@@ -107,6 +126,18 @@ public class Pistola : Arma
             StopCoroutine(rutinaTiempoVida);
         }
         Vector3 puntoImpacto = transform.position;
+        if (collision.GetComponent<Vida>() == null)
+        {
+            if (particulaTierra != null)
+            {
+                GameObject efectoTierra = Instantiate(
+                    particulaTierra,
+                    puntoImpacto,
+                    Quaternion.identity);
+
+                Destroy(efectoTierra, 2f);
+            }
+        }
         Vida vidaObjetivo = collision.GetComponent<Vida>();
         if (vidaObjetivo != null)
         {

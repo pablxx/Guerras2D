@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tipo: 0
   NombreArma: Granada
-  Icono: {fileID: 21300000, guid: 439d9cd7f1bac8f429a2c0937d9da9c0, type: 3}
+  Icono: {fileID: 21300000, guid: ab28c25ab55b47447ac8beba7477690d, type: 3}
   Descripcion: Granada de mano
   RadioExplosion: 50
   RadioDanio: 4
@@ -24,3 +24,4 @@ MonoBehaviour:
   Temporizador: 1
   TiempoExplosion: 5
   Rafagas: 0
+  AudioInstancia: {fileID: 8300000, guid: 855e81f2d5568d54188979b751e9e63f, type: 3}

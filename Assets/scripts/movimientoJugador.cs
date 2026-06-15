@@ -1,4 +1,6 @@
-﻿using UnityEditor.ShaderKeywordFilter;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -16,6 +18,12 @@ public class movimientoJugador : MonoBehaviour
     [SerializeField] float velocidadCarga = 15f;
     [SerializeField] public Slider barraFuerzaUI;
     [SerializeField] GameObject prefabMiraMouse;
+
+    [Header("Configuración de Saltos Especiales")]
+    [SerializeField] private float multiplicadorSaltoAlto = 1.9f;
+    [SerializeField] private float potenciaBackflipX = 3f;
+    [SerializeField] private float potenciaBackflipY = 1.5f;
+    [SerializeField] private float tiempoDobleToque = 0.2f;
 
     PlayerInput input;
     InputAction mover;
@@ -36,12 +44,21 @@ public class movimientoJugador : MonoBehaviour
 
     CapsuleCollider2D col2d;
     private GameObject instanciaMiraMouse;
+    private ControlAnimador MiAnimador;
+
+    private float ultimoToqueEspacio = 0f;
+    private bool puedeSaltar = true;
+    private bool saltoAltoUsado = false;
+    private bool saltoNormalReciente = false;
+    private bool backflipUsado = false;
+    private bool haciendoBackflip = false;
 
     void Start()
     {
         input = GetComponent<PlayerInput>();
         rb2d = GetComponent<Rigidbody2D>();
         col2d = GetComponent<CapsuleCollider2D>();
+        MiAnimador = GetComponent<ControlAnimador>();
 
         mover = input.actions.FindAction("MoverPersonaje");
         salto = input.actions.FindAction("Jump");
@@ -55,6 +72,11 @@ public class movimientoJugador : MonoBehaviour
         atacar.canceled += AlSoltarBotonDisparo;
     }
 
+    bool EstaEnSuelo()
+    {
+        return Mathf.Abs(rb2d.linearVelocity.y) < 0.05f;
+    }
+
     void Update()
     {
         if (atacando)
@@ -65,6 +87,14 @@ public class movimientoJugador : MonoBehaviour
         }
 
         movimiento = mover.ReadValue<Vector2>();
+        MiAnimador.ActualizarCaminata(rb2d.linearVelocity.x);
+
+        if (EstaEnSuelo() && !haciendoBackflip)
+        {
+            puedeSaltar = true;
+            saltoAltoUsado = false;
+            backflipUsado = false;
+        }
 
         if (salto.WasPressedThisFrame())
         {
@@ -83,8 +113,12 @@ public class movimientoJugador : MonoBehaviour
                 PanelInventario.Instancia.InventarioActivo = false;
             }
         }
-        if (opciones.WasPressedThisFrame()){ 
-            
+        if (opciones.WasPressedThisFrame())
+        {
+
+            {
+
+            }
         }
 
         Apuntar();
@@ -100,6 +134,12 @@ public class movimientoJugador : MonoBehaviour
             return;
         }
         DatosArmas datos = PanelInventario.Instancia.ArmaEquipadaActiva;
+
+        if (MiAnimador != null)
+        {
+
+        }
+
         if (instanciaMiraMouse != null)
         {
             Vector3 posicionMouse = Mouse.current.position.ReadValue();
@@ -147,7 +187,10 @@ public class movimientoJugador : MonoBehaviour
             return;
         }
 
-        rb2d.linearVelocity = new Vector2(movimiento.x * velocidad, rb2d.linearVelocity.y);
+        if (!haciendoBackflip)
+        {
+            rb2d.linearVelocity = new Vector2(movimiento.x * velocidad, rb2d.linearVelocity.y);
+        }
 
         if (Mathf.Abs(movimiento.x) > 0.01f)
         {
@@ -246,6 +289,8 @@ public class movimientoJugador : MonoBehaviour
             {
                 barraFuerzaUI.gameObject.SetActive(false);
             }
+            ArmaVisualJugador visualArma = gameObject.GetComponentInChildren<ArmaVisualJugador>();
+            visualArma.LimpiarArma();
             Atacar(fuerzaActual);
         }
     }
@@ -257,11 +302,11 @@ public class movimientoJugador : MonoBehaviour
 
         DatosArmas armaSeleccionada = PanelInventario.Instancia.ArmaEquipadaActiva;
         PanelInventario.Instancia.DescontarArma(armaSeleccionada);
-
+        ArmaVisualJugador visualArma = gameObject.GetComponentInChildren<ArmaVisualJugador>();
+        visualArma.LimpiarArma();
         GameObject nuevaArma = Instantiate(armaSeleccionada.prefabArma, puntoDisparo.position, puntoDisparo.rotation);
 
         if (esMelee) nuevaArma.transform.SetParent(transform);
-
 
         Arma scriptArma = nuevaArma.GetComponent<Arma>();
         if (scriptArma != null)
@@ -284,7 +329,6 @@ public class movimientoJugador : MonoBehaviour
         camaraMovimiento scriptCam = Camera.main.GetComponent<camaraMovimiento>();
         if (scriptCam != null) scriptCam.EnfocarObjetivo(nuevaArma.transform);
     }
-    
 
     void EjecutarAtaqueClicMapa()
     {
@@ -294,6 +338,8 @@ public class movimientoJugador : MonoBehaviour
 
         PanelInventario.Instancia.PermisoAtacar = false;
         atacando = true;
+        ArmaVisualJugador visualArma = gameObject.GetComponentInChildren<ArmaVisualJugador>();
+        visualArma.LimpiarArma();
         DestruirMiraMouse();
         DatosArmas armaSeleccionada = PanelInventario.Instancia.ArmaEquipadaActiva;
         if (armaSeleccionada != null)
@@ -312,6 +358,8 @@ public class movimientoJugador : MonoBehaviour
 
     void Atacar(float fuerzaLanzamiento)
     {
+        ArmaVisualJugador visualArma =  gameObject.GetComponentInChildren<ArmaVisualJugador>();
+        visualArma.LimpiarArma();
         atacando = true;
         Debug.Log(gameObject.name + " está atacando con fuerza de: " + fuerzaLanzamiento);
 
@@ -333,6 +381,7 @@ public class movimientoJugador : MonoBehaviour
                 if (transform.localScale.x < 0) dir = -dir;
                 scriptBala.ConfigurarDisparoInicial(puntoDisparo.position, puntoDisparo.rotation, dir);
             }
+            // Proyectiles con física física física
             Rigidbody2D rbArma = nuevaArma.GetComponent<Rigidbody2D>();
             if (rbArma != null)
             {
@@ -397,11 +446,92 @@ public class movimientoJugador : MonoBehaviour
             }
         }
     }
+
     void saltar()
     {
         if (atacando) return;
-        rb2d.AddForce(Vector2.up * fuerzaSalto, ForceMode2D.Impulse);
+
+        //  CONDICIÓN BACKFLIP
+        if (puedeSaltar && Keyboard.current.leftShiftKey.isPressed && !backflipUsado)
+        {
+            AudioManager.Instancia.PlaySonidoSalto(0);
+            float direccionAtras = (transform.localScale.x > 0) ? -1f : 1f;
+            haciendoBackflip = true;
+
+            rb2d.linearVelocity = new Vector2(direccionAtras * potenciaBackflipX, fuerzaSalto * potenciaBackflipY);
+            StartCoroutine(HacerBackflip());
+
+            if (MiAnimador != null) MiAnimador.EjecutarImpulsoSalto();
+
+            backflipUsado = true;
+            puedeSaltar = false;
+            return;
+        }
+
+        //  CONDICIÓN SALTO ALTO (COMBO)
+        if (!saltoAltoUsado && saltoNormalReciente)
+        {
+            AudioManager.Instancia.PlaySonidoSalto(1);
+            rb2d.linearVelocity = new Vector2(rb2d.linearVelocity.x, fuerzaSalto * multiplicadorSaltoAlto);
+
+            if (MiAnimador != null) MiAnimador.EjecutarImpulsoSalto();
+
+            saltoAltoUsado = true;
+            saltoNormalReciente = false;
+            return;
+        }
+
+        //  CONDICIÓN SALTO NORMAL
+        if (puedeSaltar)
+        {
+            AudioManager.Instancia.PlaySonidoSalto(2);
+            rb2d.linearVelocity = new Vector2(rb2d.linearVelocity.x, fuerzaSalto);
+
+            if (MiAnimador != null) MiAnimador.EjecutarImpulsoSalto();
+
+            puedeSaltar = false;
+            ultimoToqueEspacio = Time.time;
+            saltoNormalReciente = true;
+
+            StartCoroutine(DesactivarSaltoNormalReciente());
+        }
     }
+
+    IEnumerator HacerBackflip()
+    {
+        float velocidadGiro = 420f;
+        float rotacionAcumulada = 0f;
+
+        while (rotacionAcumulada < 360f)
+        {
+            float giroFrame = velocidadGiro * Time.deltaTime;
+            if (rotacionAcumulada + giroFrame > 360f)
+            {
+                giroFrame = 360f - rotacionAcumulada;
+            }
+
+            rotacionAcumulada += giroFrame;
+            float direccionRotacion = (transform.localScale.x > 0) ? 360f : -360f;
+
+            float angulo = Mathf.Lerp(0f, direccionRotacion, rotacionAcumulada / 360f);
+            transform.rotation = Quaternion.Euler(0f, 0f, angulo);
+
+            yield return null;
+        }
+
+        transform.rotation = Quaternion.identity;
+        yield return new WaitUntil(() => EstaEnSuelo());
+
+        rb2d.linearVelocity = new Vector2(0f, rb2d.linearVelocity.y);
+        haciendoBackflip = false;
+    }
+
+    IEnumerator DesactivarSaltoNormalReciente()
+    {
+        yield return new WaitForSeconds(tiempoDobleToque);
+        saltoNormalReciente = false;
+    }
+
     private void OnDrawGizmos()
     {
         if (!enabled || col2d == null) return;
@@ -424,16 +554,4 @@ public class movimientoJugador : MonoBehaviour
         }
         DestruirMiraMouse();
     }
-
-    /* TANIA Y ALEX  .....ANIMACIONES DE CAMINAR, SALTAR, SACAR ARMA, MUERTE ,
-                          EN EL AIRE IMPLEMENTADOS EN EL UNITY*/
-    /* ILSEN  ............AUMENTAR UN ESCENARIO MAS CON TEMATICA DEL PARQUE TEMATICO Y ICONOS DE MAS ARMAS  */
-    /* VICTOR ............HACER UN ESCENARIO MEJORAR LA MUSICA*/
-    /* VALERIA ...........ANIMACION DE IU DE INICIO Y MEJORA VISUAL DE BOTONES (TIPOGRAFIA)*/
-    /* GLORIA ............INCORPORACION DE PARTICULAS (DESTRUCCION DEL TERRENO Y EFECTOS DE LAS ARMAS)*/
-    /* SAUL ..............ESCENA DE TRANSICION ANIMADA (CARGANDO.....) UNA ESCENA DE PRESENTACION(CARRERA DAD)  */
-    /* OTTICH ............PARTICULAS DE FUEGO BIEN OPTIMIZADO*/
-    /* KEVIN .............MENU DE PAUSA E INCORPORACION DE ASSETS EN LA ESCENA DEL JUEGO*/ 
-
-    /* SI NO GRABAN 0 NOMAS */
 }

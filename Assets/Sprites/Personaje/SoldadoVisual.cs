@@ -3,42 +3,54 @@ using UnityEngine;
 
 public class SoldadoVisual : MonoBehaviour
 {
-    [SerializeField] private List<Sprite> listaSpritesFacciones = new List<Sprite>();
+    [Header("Referencias del Cuerpo")]
+    [SerializeField] private List<SpriteRenderer> piezasDelCuerpo = new List<SpriteRenderer>();
 
-    private SpriteRenderer miSpriteRenderer;
+    [Header("Colecciones de Sprites")]
+    [SerializeField] private List<Sprite> spritesPolicias = new List<Sprite>();
+    [SerializeField] private List<Sprite> spritesMineros = new List<Sprite>();
+    [SerializeField] private List<Sprite> spritesCampesinitos = new List<Sprite>();
+    [SerializeField] private List<Sprite> spritesCholitas = new List<Sprite>();
 
-    private void Awake()
-    {
-        miSpriteRenderer = GetComponent<SpriteRenderer>();
-    }
     public void CambiarSpritePorCadena(string nombreFaccion)
     {
-        if (miSpriteRenderer == null) miSpriteRenderer = GetComponent<SpriteRenderer>();
         string faccionLimpia = nombreFaccion.Trim();
-        int indiceElegido = -1;
+        List<Sprite> listaSpritesElegida = null;
         if (faccionLimpia == "Policias")
         {
-            indiceElegido = 0;
+            listaSpritesElegida = spritesPolicias;
         }
         else if (faccionLimpia == "Mineros")
         {
-            indiceElegido = 1;
+            listaSpritesElegida = spritesMineros;
         }
         else if (faccionLimpia == "Campesinitos")
         {
-            indiceElegido = 2;
+            listaSpritesElegida = spritesCampesinitos;
         }
         else if (faccionLimpia == "Cholitas")
         {
-            indiceElegido = 3;
+            listaSpritesElegida = spritesCholitas;
         }
-        if (indiceElegido != -1 && listaSpritesFacciones.Count > indiceElegido && listaSpritesFacciones[indiceElegido] != null)
+
+        if (listaSpritesElegida != null && listaSpritesElegida.Count > 0)
         {
-            miSpriteRenderer.sprite = listaSpritesFacciones[indiceElegido];
+            for (int i = 0; i < piezasDelCuerpo.Count; i++)
+            {
+                if (piezasDelCuerpo[i] != null && i < listaSpritesElegida.Count && listaSpritesElegida[i] != null)
+                {
+                    piezasDelCuerpo[i].sprite = listaSpritesElegida[i];
+                }
+                else
+                {
+                    Debug.LogWarning($"[SoldadoVisual] Omisión o discrepancia en el elemento índice {i} para la facción '{faccionLimpia}'.");
+                }
+            }
+            Debug.Log($"[SoldadoVisual] ¡Éxito! Aspecto completo cambiado a la facción: '{faccionLimpia}'");
         }
         else
         {
-            Debug.LogWarning($"[SoldadoVisual] No se encontró un sprite para la facción: '{nombreFaccion}'");
+            Debug.LogError($"[SoldadoVisual] Error crítico: No se encontraron sprites asignados o no existe la facción: '{nombreFaccion}'");
         }
     }
 }

@@ -56,6 +56,10 @@ using UnityEngine.EventSystems;
             panelPrincipal.SeleccionarArma(armaAsignada);
         if (TurnoManager.Instancia != null && TurnoManager.Instancia.soldadoActivoEnEsteTurno != null)
         {
+            if (PanelInventario.Instancia != null && PanelInventario.Instancia.ArmaEquipadaActiva != null)
+            {
+                TurnoManager.Instancia.soldadoActivoEnEsteTurno.gameObject.GetComponentInChildren<ArmaVisualJugador>().RenderizarArma(PanelInventario.Instancia.ArmaEquipadaActiva.icono);             
+            }
             camaraMovimiento scriptCamara = Camera.main.GetComponent<camaraMovimiento>();
             if (scriptCamara != null)
             {

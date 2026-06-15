@@ -40,14 +40,14 @@ public class GestionarResultados : MonoBehaviour
 
     public void MostrarResultados()
     {
+        AudioManager.Instancia.PlaySFXPorIndice(1);
         string nombreA = "EQUIPO A";
         string nombreB = "EQUIPO B";
 
-        PlayerInmortal jugadorInmortal = Object.FindFirstObjectByType<PlayerInmortal>();
-        if (jugadorInmortal != null)
+        if (TurnoManager.Instancia != null)
         {
-            nombreA = jugadorInmortal.nombresEquipoA[0];
-            nombreB = jugadorInmortal.nombresEquipoB[0];
+            nombreA = TurnoManager.Instancia.NombreEquipoA;
+            nombreB = TurnoManager.Instancia.NombreEquipoB;
         }
 
         if (textoGanador != null)
@@ -89,6 +89,7 @@ public class GestionarResultados : MonoBehaviour
 
     public void RegresarAlMenuCrearPartida()
     {
+        AudioManager.Instancia.CalmarTodosLosEfectos();
         PlayerInmortal jugadorInmortal = Object.FindFirstObjectByType<PlayerInmortal>(FindObjectsInactive.Include);
         if (jugadorInmortal != null)
         {
@@ -104,6 +105,7 @@ public class GestionarResultados : MonoBehaviour
             jugadorInmortal.nombresEquipoB.Clear();
 
             jugadorInmortal.CambiarEscenaConCarga("CrearPartida", 0.3f);
+            AudioManager.Instancia.ReproducirMusicaPorIndice(1);
         }
         else
         {

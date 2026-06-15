@@ -39,8 +39,9 @@ public class TurnoManager : MonoBehaviour
     public List<GameObject> listaMuertosPendientes = new List<GameObject>();
     public bool procesandoFaseMuertos = false;
     private Coroutine corrutinaNotificacionActiva;
-    string NombreEquipoA;
-    string NombreEquipoB;
+    public string NombreEquipoA;
+    public string NombreEquipoB;
+    private bool yaAvisoTiempoCritico = false;
 
 
     void Awake()
@@ -77,25 +78,35 @@ public class TurnoManager : MonoBehaviour
 
         equipoQueLeToca = TipoEquipo.EquipoA;
         ActivarSiguienteEnCola();
+        AudioManager.Instancia.ReproducirMusicaJuegoAleatoria();
     }
 
     void Update()
     {
         if (!temporizadorActivo || procesandoFaseMuertos) return;
+
         if (tiempoRestante > 0)
         {
             tiempoRestante -= Time.deltaTime;
+
             if (textoNotificacionesUI != null && corrutinaNotificacionActiva == null)
             {
                 Temporizador.text = Mathf.CeilToInt(tiempoRestante).ToString() + "s";
+            }
+            if (tiempoRestante <= 15f && !yaAvisoTiempoCritico)
+            {
+                yaAvisoTiempoCritico = true;
+                AudioManager.Instancia.ReproducirVozFinalTiempoAleatoria();
             }
         }
         else
         {
             tiempoRestante = 0;
             temporizadorActivo = false;
+
             if (textoNotificacionesUI != null && corrutinaNotificacionActiva == null)
                 textoNotificacionesUI.text = "¡TIEMPO AGOTADO!";
+
             Debug.LogWarning("[TurnoManager] El jugador agotó su tiempo de turno.");
             FinalizarTurno(null);
         }
@@ -134,6 +145,15 @@ public class TurnoManager : MonoBehaviour
                 textoNotificacionesUI.text = "VICTORIA! GANÓ EL EQUIPO " + NombreEquipoB;
             }
 
+            foreach (GameObject soldado in ListaSoldadosB)
+            {
+                if (soldado != null)
+                {
+                    ControlAnimador anim = soldado.GetComponentInChildren<ControlAnimador>();
+                    anim.EjecutarFestejo();
+                }
+            }
+
             if (miCamara != null && ListaSoldadosB[0] != null)
             {
                 var inputGanador = ListaSoldadosB[0].GetComponent<PlayerInput>();
@@ -160,6 +180,15 @@ public class TurnoManager : MonoBehaviour
                 textoNotificacionesUI.text = "¡VICTORIA! GANÓ EL EQUIPO " + NombreEquipoA;
             }
 
+            foreach (GameObject soldado in ListaSoldadosA)
+            {
+                if (soldado != null)
+                {
+                    ControlAnimador anim = soldado.GetComponentInChildren<ControlAnimador>();
+                    anim.EjecutarFestejo();
+                }
+            }
+
             if (miCamara != null && ListaSoldadosA[0] != null)
             {
                 var inputGanador = ListaSoldadosA[0].GetComponent<PlayerInput>();
@@ -179,12 +208,16 @@ public class TurnoManager : MonoBehaviour
 
     public void FinalizarTurno(GameObject ArmaUtilizada)
     {
+        yaAvisoTiempoCritico = false;
+        textoNotificacionesUI.text = "";
         temporizadorActivo = false;
         if (PanelInventario.Instancia != null)
             PanelInventario.Instancia.PermisoAtacar = false;
 
         if (soldadoActivoEnEsteTurno != null)
         {
+            ArmaVisualJugador visualArma = soldadoActivoEnEsteTurno.GetComponentInChildren<ArmaVisualJugador>();
+            visualArma.LimpiarArma();
             DesactivarSoldadoEspecifico(soldadoActivoEnEsteTurno);
 
             if (ListaSoldadosA.Contains(soldadoActivoEnEsteTurno) || ListaSoldadosB.Contains(soldadoActivoEnEsteTurno))
@@ -229,16 +262,21 @@ public class TurnoManager : MonoBehaviour
         {
             GameObject soldadoCaido = listaMuertosPendientes[i];
             if (soldadoCaido == null) continue;
+
             Debug.Log($"[Fase Muertos] Enfocando a {soldadoCaido.name} por 3 segundos.");
             MostrarNotificacion($"{soldadoCaido.name} cayó en combate y va a estallar.");
             DesactivarSoldadoEspecifico(soldadoCaido);
-
+            ControlAnimador animador = soldadoCaido.GetComponentInChildren<ControlAnimador>();
+            AudioManager.Instancia.ReproducirVozMuerteAleatoria();
+            animador.EjecutarMuerte();
             var inputGusanoMuerto = soldadoCaido.GetComponent<PlayerInput>();
             if (miCamara != null && inputGusanoMuerto != null)
             {
                 miCamara.ActualizarReferenciaInput(inputGusanoMuerto);
             }
+
             yield return new WaitForSeconds(3f);
+
             autodestruccion scriptExplosion = soldadoCaido.GetComponent<autodestruccion>();
             if (scriptExplosion != null)
             {
@@ -257,9 +295,11 @@ public class TurnoManager : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
             }
         }
+
         Debug.Log("[Fase Muertos] Todos los caídos de este turno han detonado. Reanudando flujo de juego.");
         listaMuertosPendientes.Clear();
         procesandoFaseMuertos = false;
+
         if (armaParaLimpiar != null)
         {
             Destroy(armaParaLimpiar);
@@ -277,7 +317,6 @@ public class TurnoManager : MonoBehaviour
 
         ActivarSiguienteEnCola();
     }
-
     public void RegistrarMuerteJugador(GameObject gusanoTarget)
     {
         if (gusanoTarget == null) return;
@@ -319,9 +358,11 @@ public class TurnoManager : MonoBehaviour
 
         if (soldadoActivoEnEsteTurno != null)
         {
+            ArmaVisualJugador visualArma = soldadoActivoEnEsteTurno.GetComponentInChildren<ArmaVisualJugador>();
             Debug.Log($"[TurnoManager] Turno de: {soldadoActivoEnEsteTurno.name} al frente de la cola ({equipoQueLeToca})");
             EnfocarSoldadoEspecifico(soldadoActivoEnEsteTurno);
-
+            visualArma.LimpiarArma();
+            AudioManager.Instancia.ReproducirVozConfirmacionAleatoria();
             var mov = soldadoActivoEnEsteTurno.GetComponent<movimientoJugador>();
             if (mov != null)
             {
@@ -330,6 +371,7 @@ public class TurnoManager : MonoBehaviour
 
             tiempoRestante = tiempoPorTurno;
             temporizadorActivo = true;
+            
         }
         else
         {
@@ -358,7 +400,6 @@ public class TurnoManager : MonoBehaviour
 
     IEnumerator InitializePartidaPorEquipos()
     {
-        Vector3 posicionSpawn = transform.position;
         PlayerInmortal jugadorInmortal = Object.FindFirstObjectByType<PlayerInmortal>();
         for (int i = 0; i < cantidadSoldadosPorEquipo; i++)
         {
@@ -453,11 +494,7 @@ public class TurnoManager : MonoBehaviour
             randomX = Mathf.Round(randomX * 10f) / 10f;
             float alturaInicialSegura = 50f;
             Vector3 nuevaPos = new Vector3(randomX, alturaInicialSegura, lista[i].transform.position.z);
-
-            if (escaneadorMapa != null)
-            {
-                nuevaPos = escaneadorMapa.ObtenerPosicionSobreSuelo(nuevaPos, 0.4f);
-            }
+            nuevaPos = escaneadorMapa.ObtenerPosicionSobreSuelo(nuevaPos, 2f);
             lista[i].transform.position = nuevaPos;
 
             Rigidbody2D rb = lista[i].GetComponent<Rigidbody2D>();
@@ -502,6 +539,7 @@ public class TurnoManager : MonoBehaviour
 
     public IEnumerator TemporizadorCambioTurno(GameObject ArmaUtilizada)
     {
+        AudioManager.Instancia.ReproducirVozFinTurnoAleatoria();
         Debug.Log("[TurnoManager] Esperando a que las físicas se estabilicen...");
         yield return new WaitForSeconds(0.8f);
         while (!TodoElMundoEstaQuieto())

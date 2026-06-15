@@ -1,0 +1,2132 @@
+fileFormatVersion: 2
+guid: 01d77789fc7337a4399a7039885b4dbd
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8569148742176999998
+    second: dirt_03-Photoroom (1)_0
+  - first:
+      213: 3477313842128737033
+    second: dirt_03-Photoroom (1)_1
+  - first:
+      213: -8166269310391098681
+    second: dirt_03-Photoroom (1)_2
+  - first:
+      213: -351452278901355710
+    second: dirt_03-Photoroom (1)_3
+  - first:
+      213: -5488996249182990971
+    second: dirt_03-Photoroom (1)_4
+  - first:
+      213: 6956554547900131728
+    second: dirt_03-Photoroom (1)_5
+  - first:
+      213: -4553062918155598780
+    second: dirt_03-Photoroom (1)_6
+  - first:
+      213: 8460240407354990367
+    second: dirt_03-Photoroom (1)_7
+  - first:
+      213: 1739811111439530571
+    second: dirt_03-Photoroom (1)_8
+  - first:
+      213: 2750662120921859989
+    second: dirt_03-Photoroom (1)_9
+  - first:
+      213: 436982535501324362
+    second: dirt_03-Photoroom (1)_10
+  - first:
+      213: 5153959636521583213
+    second: dirt_03-Photoroom (1)_11
+  - first:
+      213: -2068085694455125120
+    second: dirt_03-Photoroom (1)_12
+  - first:
+      213: -2464102528829359056
+    second: dirt_03-Photoroom (1)_13
+  - first:
+      213: 2166485880949706038
+    second: dirt_03-Photoroom (1)_14
+  - first:
+      213: -165570540530088018
+    second: dirt_03-Photoroom (1)_15
+  - first:
+      213: 3137527048220043173
+    second: dirt_03-Photoroom (1)_16
+  - first:
+      213: 8387806602982977597
+    second: dirt_03-Photoroom (1)_17
+  - first:
+      213: -3141928233774346788
+    second: dirt_03-Photoroom (1)_18
+  - first:
+      213: -1457782103556023303
+    second: dirt_03-Photoroom (1)_19
+  - first:
+      213: 3263097061169747239
+    second: dirt_03-Photoroom (1)_20
+  - first:
+      213: -1702253365659169186
+    second: dirt_03-Photoroom (1)_21
+  - first:
+      213: -2440272088316937217
+    second: dirt_03-Photoroom (1)_22
+  - first:
+      213: 8754556257017875624
+    second: dirt_03-Photoroom (1)_23
+  - first:
+      213: -5436771571818158904
+    second: dirt_03-Photoroom (1)_24
+  - first:
+      213: -3424368011933768257
+    second: dirt_03-Photoroom (1)_25
+  - first:
+      213: 7604246456173452978
+    second: dirt_03-Photoroom (1)_26
+  - first:
+      213: 6935875331987869503
+    second: dirt_03-Photoroom (1)_27
+  - first:
+      213: 5056269424126671687
+    second: dirt_03-Photoroom (1)_28
+  - first:
+      213: 8870950122281408069
+    second: dirt_03-Photoroom (1)_29
+  - first:
+      213: -9071324006922945061
+    second: dirt_03-Photoroom (1)_30
+  - first:
+      213: -3895307993806428785
+    second: dirt_03-Photoroom (1)_31
+  - first:
+      213: 683823083233144198
+    second: dirt_03-Photoroom (1)_32
+  - first:
+      213: 3366296732878281099
+    second: dirt_03-Photoroom (1)_33
+  - first:
+      213: -6940148590489759388
+    second: dirt_03-Photoroom (1)_34
+  - first:
+      213: -4063797379941755543
+    second: dirt_03-Photoroom (1)_35
+  - first:
+      213: -6393584136846705848
+    second: dirt_03-Photoroom (1)_36
+  - first:
+      213: -844340322732184444
+    second: dirt_03-Photoroom (1)_37
+  - first:
+      213: -8470463093841105835
+    second: dirt_03-Photoroom (1)_38
+  - first:
+      213: -1532635270883689886
+    second: dirt_03-Photoroom (1)_39
+  - first:
+      213: 4372065742427201619
+    second: dirt_03-Photoroom (1)_40
+  - first:
+      213: 2552586428058179106
+    second: dirt_03-Photoroom (1)_41
+  - first:
+      213: 4052721519294274401
+    second: dirt_03-Photoroom (1)_42
+  - first:
+      213: 8990141120591311414
+    second: dirt_03-Photoroom (1)_43
+  - first:
+      213: 2211880603822454494
+    second: dirt_03-Photoroom (1)_44
+  - first:
+      213: 6684592431007993477
+    second: dirt_03-Photoroom (1)_45
+  - first:
+      213: 518268105834330289
+    second: dirt_03-Photoroom (1)_46
+  - first:
+      213: -4034269843634578306
+    second: dirt_03-Photoroom (1)_47
+  - first:
+      213: 3554247136851554304
+    second: dirt_03-Photoroom (1)_48
+  - first:
+      213: 3069103046047932474
+    second: dirt_03-Photoroom (1)_49
+  - first:
+      213: 4777015128640418530
+    second: dirt_03-Photoroom (1)_50
+  - first:
+      213: -4332024307587254742
+    second: dirt_03-Photoroom (1)_51
+  - first:
+      213: 5944923430517618743
+    second: dirt_03-Photoroom (1)_52
+  - first:
+      213: -4980270207592794693
+    second: dirt_03-Photoroom (1)_53
+  - first:
+      213: 7326661493965305461
+    second: dirt_03-Photoroom (1)_54
+  - first:
+      213: 534614344020001532
+    second: dirt_03-Photoroom (1)_55
+  - first:
+      213: -264920405945480976
+    second: dirt_03-Photoroom (1)_56
+  - first:
+      213: 8684280460381276003
+    second: dirt_03-Photoroom (1)_57
+  - first:
+      213: 1219260822505912090
+    second: dirt_03-Photoroom (1)_58
+  - first:
+      213: -857119006232618356
+    second: dirt_03-Photoroom (1)_59
+  - first:
+      213: -4533772276004792265
+    second: dirt_03-Photoroom (1)_60
+  - first:
+      213: -3040246044800344826
+    second: dirt_03-Photoroom (1)_61
+  - first:
+      213: -3920019197720513691
+    second: dirt_03-Photoroom (1)_62
+  - first:
+      213: -2427346717228007569
+    second: dirt_03-Photoroom (1)_63
+  - first:
+      213: 2899388878423701435
+    second: dirt_03-Photoroom (1)_64
+  - first:
+      213: 6979456952177682611
+    second: dirt_03-Photoroom (1)_65
+  - first:
+      213: 8976862161379455029
+    second: dirt_03-Photoroom (1)_66
+  - first:
+      213: 7346166511180340115
+    second: dirt_03-Photoroom (1)_67
+  - first:
+      213: 7916587503498420799
+    second: dirt_03-Photoroom (1)_68
+  - first:
+      213: 8551206925676623379
+    second: dirt_03-Photoroom (1)_69
+  - first:
+      213: 279780030084158099
+    second: dirt_03-Photoroom (1)_70
+  - first:
+      213: -4490035589164529416
+    second: dirt_03-Photoroom (1)_71
+  - first:
+      213: -2255200748950494377
+    second: dirt_03-Photoroom (1)_72
+  - first:
+      213: 7533619655106135902
+    second: dirt_03-Photoroom (1)_73
+  - first:
+      213: -4959362551086501765
+    second: dirt_03-Photoroom (1)_74
+  - first:
+      213: 6104892757998329356
+    second: dirt_03-Photoroom (1)_75
+  - first:
+      213: 2113724106388672852
+    second: dirt_03-Photoroom (1)_76
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_0
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 478
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c5fd0bce94441980800000000000000
+      internalID: -8569148742176999998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_1
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 463
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 903d1ac0486e14030800000000000000
+      internalID: 3477313842128737033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_2
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 465
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c2e6f534559bae80800000000000000
+      internalID: -8166269310391098681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_3
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 456
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24b4590b3046f1bf0800000000000000
+      internalID: -351452278901355710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_4
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 454
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58d0ff94efa23d3b0800000000000000
+      internalID: -5488996249182990971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_5
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 405
+        width: 41
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09927300185aa8060800000000000000
+      internalID: 6956554547900131728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_6
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 428
+        width: 36
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 444055b266540d0c0800000000000000
+      internalID: -4553062918155598780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_7
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 446
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1fdcc283dfc86570800000000000000
+      internalID: 8460240407354990367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_8
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 436
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4a71a9ecfc052810800000000000000
+      internalID: 1739811111439530571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_9
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 438
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5978ba610a05c2620800000000000000
+      internalID: 2750662120921859989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_10
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 31
+        width: 402
+        height: 402
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a402b910d49701600800000000000000
+      internalID: 436982535501324362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_11
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 424
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6202998bfa868740800000000000000
+      internalID: 5153959636521583213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_12
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 381
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08b6fe0a40fac43e0800000000000000
+      internalID: -2068085694455125120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_13
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 385
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03cfbfe2ecfbdcdd0800000000000000
+      internalID: -2464102528829359056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_14
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 368
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63d08e02e67e01e10800000000000000
+      internalID: 2166485880949706038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_15
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 371
+        width: 21
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea74f6a7876c3bdf0800000000000000
+      internalID: -165570540530088018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_16
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 356
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a7e55e1a3cba8b20800000000000000
+      internalID: 3137527048220043173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_17
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 362
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d30f9773aa9776470800000000000000
+      internalID: 8387806602982977597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_18
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 346
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdd0c140be0a564d0800000000000000
+      internalID: -3141928233774346788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_19
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 324
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fb1f9586eae4cbe0800000000000000
+      internalID: -1457782103556023303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_20
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 349
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 725d4ae0d79d84d20800000000000000
+      internalID: 3263097061169747239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_21
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 327
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5e0c2635916068e0800000000000000
+      internalID: -1702253365659169186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_22
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 314
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffb719cf679622ed0800000000000000
+      internalID: -2440272088316937217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_23
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 306
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ac49b9388e6e7970800000000000000
+      internalID: 8754556257017875624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_24
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 319
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c426d88f05bc84b0800000000000000
+      internalID: -5436771571818158904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_25
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 316
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb52a7caf633a70d0800000000000000
+      internalID: -3424368011933768257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_26
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 309
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2beddb4ecd5b78960800000000000000
+      internalID: 7604246456173452978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_27
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 303
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3f0889dddd214060800000000000000
+      internalID: 6935875331987869503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_28
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 303
+        width: 24
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74b3db1804a7b2640800000000000000
+      internalID: 5056269424126671687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_29
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 289
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5469acac222fb1b70800000000000000
+      internalID: 8870950122281408069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_30
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 294
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdd72eca0ee2c1280800000000000000
+      internalID: -9071324006922945061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_31
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 267
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f85ad62940611f9c0800000000000000
+      internalID: -3895307993806428785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_32
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 215
+        width: 64
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68de25d987d6d7900800000000000000
+      internalID: 683823083233144198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_33
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 226
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8994cb0b0d77be20800000000000000
+      internalID: 3366296732878281099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_34
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 212
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4611e6f90a3afaf90800000000000000
+      internalID: -6940148590489759388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_35
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 176
+        width: 32
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 965986950dd7a97c0800000000000000
+      internalID: -4063797379941755543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_36
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 207
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84bfda92a1d6547a0800000000000000
+      internalID: -6393584136846705848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_37
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 193
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48c620233fc4844f0800000000000000
+      internalID: -844340322732184444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_38
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 192
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55c6b80d1bed27a80800000000000000
+      internalID: -8470463093841105835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_39
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 137
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26a3eb4675cfabae0800000000000000
+      internalID: -1532635270883689886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_40
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 133
+        width: 43
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3502708e0a2bcac30800000000000000
+      internalID: 4372065742427201619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_41
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 84
+        width: 79
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22614e605db9c6320800000000000000
+      internalID: 2552586428058179106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_42
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 117
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16bdd13efb82e3830800000000000000
+      internalID: 4052721519294274401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_43
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 126
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6323a75a7b563cc70800000000000000
+      internalID: 8990141120591311414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_44
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 45
+        width: 46
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed6f96ca0bd22be10800000000000000
+      internalID: 2211880603822454494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_45
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 94
+        width: 28
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58e0f76466174cc50800000000000000
+      internalID: 6684592431007993477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_46
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 74
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b87baaa812413700800000000000000
+      internalID: 518268105834330289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_47
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 92
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7c1712a3f46308c0800000000000000
+      internalID: -4034269843634578306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_48
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 83
+        width: 30
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0007cf390f8335130800000000000000
+      internalID: 3554247136851554304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_49
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 47
+        width: 46
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a30a1c6a5f4a79a20800000000000000
+      internalID: 3069103046047932474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_50
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 80
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e2774523fd5b4240800000000000000
+      internalID: 4777015128640418530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_51
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 74
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2677e328de81e3c0800000000000000
+      internalID: -4332024307587254742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_52
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 66
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73836eccc5c908250800000000000000
+      internalID: 5944923430517618743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_53
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 51
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb578fef1a682eab0800000000000000
+      internalID: -4980270207592794693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_54
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 45
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 576b5597fc78da560800000000000000
+      internalID: 7326661493965305461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_55
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 28
+        width: 18
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf20423d9e45b6700800000000000000
+      internalID: 534614344020001532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_56
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 41
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f80edd5b40d25cf0800000000000000
+      internalID: -264920405945480976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_57
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 33
+        width: 31
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36744e24113c48870800000000000000
+      internalID: 8684280460381276003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_58
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 47
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a17f306124fabe010800000000000000
+      internalID: 1219260822505912090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_59
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 46
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8ad4471ec6ea14f0800000000000000
+      internalID: -857119006232618356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_60
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 39
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 738583cc22ec411c0800000000000000
+      internalID: -4533772276004792265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_61
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 45
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60d93e58450eec5d0800000000000000
+      internalID: -3040246044800344826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_62
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 27
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 563382f0f4b4999c0800000000000000
+      internalID: -3920019197720513691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_63
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 44
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6ff9e47505505ed0800000000000000
+      internalID: -2427346717228007569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_64
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 17
+        width: 34
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb7b924c2d2bc3820800000000000000
+      internalID: 2899388878423701435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_65
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 33
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b86ea78e130cd060800000000000000
+      internalID: 6979456952177682611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_66
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 31
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 530faa60398349c70800000000000000
+      internalID: 8976862161379455029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_67
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 25
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39b56cf2583d2f560800000000000000
+      internalID: 7346166511180340115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_68
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 35
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f32e15bf36e5ddd60800000000000000
+      internalID: 7916587503498420799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_69
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 33
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 316b0d5846dfba670800000000000000
+      internalID: 8551206925676623379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_70
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 37
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3921a6c747af1e300800000000000000
+      internalID: 279780030084158099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_71
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 4
+        width: 22
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f88cfebb6030b1c0800000000000000
+      internalID: -4490035589164529416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_72
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 19
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7536c9d0edae3b0e0800000000000000
+      internalID: -2255200748950494377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_73
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 29
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e578087592bcc8860800000000000000
+      internalID: 7533619655106135902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_74
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 22
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b703d1e190ecc2bb0800000000000000
+      internalID: -4959362551086501765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_75
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 16
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0e58584e9fe8b450800000000000000
+      internalID: 6104892757998329356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dirt_03-Photoroom (1)_76
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 16
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4511a7230e4755d10800000000000000
+      internalID: 2113724106388672852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      dirt_03-Photoroom (1)_0: -8569148742176999998
+      dirt_03-Photoroom (1)_1: 3477313842128737033
+      dirt_03-Photoroom (1)_10: 436982535501324362
+      dirt_03-Photoroom (1)_11: 5153959636521583213
+      dirt_03-Photoroom (1)_12: -2068085694455125120
+      dirt_03-Photoroom (1)_13: -2464102528829359056
+      dirt_03-Photoroom (1)_14: 2166485880949706038
+      dirt_03-Photoroom (1)_15: -165570540530088018
+      dirt_03-Photoroom (1)_16: 3137527048220043173
+      dirt_03-Photoroom (1)_17: 8387806602982977597
+      dirt_03-Photoroom (1)_18: -3141928233774346788
+      dirt_03-Photoroom (1)_19: -1457782103556023303
+      dirt_03-Photoroom (1)_2: -8166269310391098681
+      dirt_03-Photoroom (1)_20: 3263097061169747239
+      dirt_03-Photoroom (1)_21: -1702253365659169186
+      dirt_03-Photoroom (1)_22: -2440272088316937217
+      dirt_03-Photoroom (1)_23: 8754556257017875624
+      dirt_03-Photoroom (1)_24: -5436771571818158904
+      dirt_03-Photoroom (1)_25: -3424368011933768257
+      dirt_03-Photoroom (1)_26: 7604246456173452978
+      dirt_03-Photoroom (1)_27: 6935875331987869503
+      dirt_03-Photoroom (1)_28: 5056269424126671687
+      dirt_03-Photoroom (1)_29: 8870950122281408069
+      dirt_03-Photoroom (1)_3: -351452278901355710
+      dirt_03-Photoroom (1)_30: -9071324006922945061
+      dirt_03-Photoroom (1)_31: -3895307993806428785
+      dirt_03-Photoroom (1)_32: 683823083233144198
+      dirt_03-Photoroom (1)_33: 3366296732878281099
+      dirt_03-Photoroom (1)_34: -6940148590489759388
+      dirt_03-Photoroom (1)_35: -4063797379941755543
+      dirt_03-Photoroom (1)_36: -6393584136846705848
+      dirt_03-Photoroom (1)_37: -844340322732184444
+      dirt_03-Photoroom (1)_38: -8470463093841105835
+      dirt_03-Photoroom (1)_39: -1532635270883689886
+      dirt_03-Photoroom (1)_4: -5488996249182990971
+      dirt_03-Photoroom (1)_40: 4372065742427201619
+      dirt_03-Photoroom (1)_41: 2552586428058179106
+      dirt_03-Photoroom (1)_42: 4052721519294274401
+      dirt_03-Photoroom (1)_43: 8990141120591311414
+      dirt_03-Photoroom (1)_44: 2211880603822454494
+      dirt_03-Photoroom (1)_45: 6684592431007993477
+      dirt_03-Photoroom (1)_46: 518268105834330289
+      dirt_03-Photoroom (1)_47: -4034269843634578306
+      dirt_03-Photoroom (1)_48: 3554247136851554304
+      dirt_03-Photoroom (1)_49: 3069103046047932474
+      dirt_03-Photoroom (1)_5: 6956554547900131728
+      dirt_03-Photoroom (1)_50: 4777015128640418530
+      dirt_03-Photoroom (1)_51: -4332024307587254742
+      dirt_03-Photoroom (1)_52: 5944923430517618743
+      dirt_03-Photoroom (1)_53: -4980270207592794693
+      dirt_03-Photoroom (1)_54: 7326661493965305461
+      dirt_03-Photoroom (1)_55: 534614344020001532
+      dirt_03-Photoroom (1)_56: -264920405945480976
+      dirt_03-Photoroom (1)_57: 8684280460381276003
+      dirt_03-Photoroom (1)_58: 1219260822505912090
+      dirt_03-Photoroom (1)_59: -857119006232618356
+      dirt_03-Photoroom (1)_6: -4553062918155598780
+      dirt_03-Photoroom (1)_60: -4533772276004792265
+      dirt_03-Photoroom (1)_61: -3040246044800344826
+      dirt_03-Photoroom (1)_62: -3920019197720513691
+      dirt_03-Photoroom (1)_63: -2427346717228007569
+      dirt_03-Photoroom (1)_64: 2899388878423701435
+      dirt_03-Photoroom (1)_65: 6979456952177682611
+      dirt_03-Photoroom (1)_66: 8976862161379455029
+      dirt_03-Photoroom (1)_67: 7346166511180340115
+      dirt_03-Photoroom (1)_68: 7916587503498420799
+      dirt_03-Photoroom (1)_69: 8551206925676623379
+      dirt_03-Photoroom (1)_7: 8460240407354990367
+      dirt_03-Photoroom (1)_70: 279780030084158099
+      dirt_03-Photoroom (1)_71: -4490035589164529416
+      dirt_03-Photoroom (1)_72: -2255200748950494377
+      dirt_03-Photoroom (1)_73: 7533619655106135902
+      dirt_03-Photoroom (1)_74: -4959362551086501765
+      dirt_03-Photoroom (1)_75: 6104892757998329356
+      dirt_03-Photoroom (1)_76: 2113724106388672852
+      dirt_03-Photoroom (1)_8: 1739811111439530571
+      dirt_03-Photoroom (1)_9: 2750662120921859989
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

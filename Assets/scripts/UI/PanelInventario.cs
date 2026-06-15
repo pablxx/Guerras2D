@@ -176,9 +176,19 @@ public class PanelInventario : MonoBehaviour
     public void SeleccionarArma(DatosArmas armaSeleccionada)
     {
         armaEquipadaActiva = armaSeleccionada;
+
         if (armaEquipadaActiva != null)
         {
             Debug.Log("Has equipado: " + armaEquipadaActiva.nombreArma);
+            if (TurnoManager.Instancia != null && TurnoManager.Instancia.soldadoActivoEnEsteTurno != null)
+            {
+                ArmaVisualJugador visualArma = TurnoManager.Instancia.soldadoActivoEnEsteTurno.GetComponentInChildren<ArmaVisualJugador>();
+
+                if (visualArma != null)
+                {
+                    visualArma.RenderizarArma(armaEquipadaActiva.icono);
+                }
+            }
         }
 
         if (UnityEngine.EventSystems.EventSystem.current != null)

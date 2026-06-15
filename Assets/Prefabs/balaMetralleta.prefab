@@ -104,6 +104,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidadBala: 25
   tiempoMaximoVida: 1
+  particulaDisparo: {fileID: 3876397578651316344, guid: 29ed2842de65a65489dd46c9017d8624, type: 3}
+  particulaTierra: {fileID: 8282062137501660915, guid: 7ea16efc09f8a1e46bc3c6edb63777b0, type: 3}
 --- !u!61 &5902810620128997356
 BoxCollider2D:
   m_ObjectHideFlags: 0

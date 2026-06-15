@@ -4,10 +4,41 @@ using UnityEngine;
 
 public class Granada : Arma
 {
+    [Header("Ajustes de Rotación Visual")]
+    [SerializeField] private float velocidadRotacionAire = 600f;
+
+    [Header("Ajustes de Efectos Visuales")]
+    [SerializeField] private GameObject prefabParticulasExplosion;
+
     private bool yaExplotó = false;
+    private Rigidbody2D rb;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     public override void Usar()
     {
+        if (rb != null)
+        {
+            float direccionGiro = -1f;
+
+            if (TurnoManager.Instancia != null && TurnoManager.Instancia.soldadoActivoEnEsteTurno != null)
+            {
+                if (TurnoManager.Instancia.soldadoActivoEnEsteTurno.transform.localScale.x < 0)
+                {
+                    direccionGiro = 1f;
+                }
+                else
+                {
+                    direccionGiro = -1f;
+                }
+            }
+
+            rb.angularVelocity = velocidadRotacionAire * direccionGiro;
+        }
+
         StartCoroutine(Temporizador1());
     }
 
@@ -15,6 +46,12 @@ public class Granada : Arma
     {
         if (yaExplotó == true) return;
         yaExplotó = true;
+
+        if (prefabParticulasExplosion != null)
+        {
+            Instantiate(prefabParticulasExplosion, puntoDeImpacto, Quaternion.identity);
+        }
+
         if (TurnoManager.Instancia != null)
         {
             TurnoManager.Instancia.DetenerTemporizadorPorAtaque();
@@ -59,7 +96,11 @@ public class Granada : Arma
         if (GetComponent<Collider2D>() != null) GetComponent<Collider2D>().enabled = false;
 
         Rigidbody2D rbGranada = GetComponent<Rigidbody2D>();
-        if (rbGranada != null) rbGranada.bodyType = RigidbodyType2D.Static;
+        if (rbGranada != null)
+        {
+            rbGranada.angularVelocity = 0f;
+            rbGranada.bodyType = RigidbodyType2D.Static;
+        }
         if (TurnoManager.Instancia != null)
         {
             TurnoManager.Instancia.StartCoroutine(TurnoManager.Instancia.TemporizadorCambioTurno(null));

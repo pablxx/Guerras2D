@@ -52,11 +52,13 @@ public class MapaManager : MonoBehaviour
 
     public void AccionRegresarConfiguracion()
     {
+        AudioManager.Instancia.PlayUIPorIndice(0);
         SceneManager.LoadScene("CrearPartida");
     }
 
     public void AccionAnteriorMapa()
     {
+        AudioManager.Instancia.PlayUIPorIndice(3);
         indiceMapaActual--;
         if (indiceMapaActual < 0)
         {
@@ -68,6 +70,7 @@ public class MapaManager : MonoBehaviour
 
     public void AccionSiguienteMapa()
     {
+        AudioManager.Instancia.PlayUIPorIndice(3);
         indiceMapaActual++;
         if (indiceMapaActual >= opcionesMapas.Length)
         {
@@ -79,6 +82,7 @@ public class MapaManager : MonoBehaviour
 
     public void AccionIniciarPartida()
     {
+        AudioManager.Instancia.PlayUIPorIndice(7);
         string mapaFinal = opcionesMapas[indiceMapaActual];
         Debug.Log($"[MapaManager] Preparando guardado del escenario: {mapaFinal}");
         PlayerInmortal jugador = Object.FindFirstObjectByType<PlayerInmortal>();
@@ -93,5 +97,8 @@ public class MapaManager : MonoBehaviour
         }
         Debug.Log($" Lanzando partida oficial en: {mapaFinal}");
         jugador.CambiarEscenaConCarga("EscenaGusanos", 3f);
+        AudioManager.Instancia.CalmarTodosLosEfectos();
     }
+
+
 }

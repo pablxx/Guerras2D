@@ -7,6 +7,10 @@ public class BalaProyectil : MonoBehaviour
     [Header("Físicas del Proyectil")]
     [SerializeField] private float velocidadBala = 25f;
     [SerializeField] private float tiempoMaximoVida = 2f;
+    [Header("Efecto del disparo")]
+    [SerializeField] private GameObject particulaDisparo;
+    [Header("Impacto con terreno")]
+    [SerializeField] private GameObject particulaTierra;
 
     private float danio;
     private int radioExplo;
@@ -26,7 +30,24 @@ public class BalaProyectil : MonoBehaviour
         radioDng = rd;
         empuje = fe;
         direccionVuelo = dir;
+
         volando = true;
+
+        if (particulaDisparo != null)
+        {
+            float angulo = Mathf.Atan2(
+                direccionVuelo.y,
+                direccionVuelo.x) * Mathf.Rad2Deg;
+
+            Quaternion rotacionEfecto = Quaternion.Euler(0, 0, angulo);
+
+            GameObject efecto = Instantiate(
+                particulaDisparo,
+                transform.position,
+                rotacionEfecto);
+
+            Destroy(efecto, 1f);
+        }
 
         Destroy(gameObject, tiempoMaximoVida);
     }
@@ -49,7 +70,20 @@ public class BalaProyectil : MonoBehaviour
         volando = false;
 
         Vector3 puntoImpacto = transform.position;
+
         Vida vidaObjetivo = collision.GetComponent<Vida>();
+        if (vidaObjetivo == null)
+        {
+            if (particulaTierra != null)
+            {
+                GameObject efectoTierra = Instantiate(
+                    particulaTierra,
+                    puntoImpacto,
+                    Quaternion.identity);
+
+                Destroy(efectoTierra, 2f);
+            }
+        }
         if (vidaObjetivo != null && !vidasProcesadasEnEsteImpacto.Contains(vidaObjetivo))
         {
             vidasProcesadasEnEsteImpacto.Add(vidaObjetivo);

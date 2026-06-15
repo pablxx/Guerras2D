@@ -116,7 +116,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 19.36373, y: 38.98, z: 0.021757161}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2853005689326545527}
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elevacionExplosion: 0.5
-  prefabEfectoExplosion: {fileID: 0}
+  prefabEfectoExplosion: {fileID: 8282062137501660915, guid: e44ab0f584762014b833a9d395369194, type: 3}
 --- !u!70 &9035008970962445160
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

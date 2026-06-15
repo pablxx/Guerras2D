@@ -5,6 +5,7 @@ using UnityEngine;
 public class autodestruccion : MonoBehaviour
 {
     [Header("Configuración de Explosión Final")]
+    [SerializeField] GameObject prefabTumba;
     [SerializeField] int radioExplosion = 4;
     [SerializeField] float radioDanio = 5f;
     [SerializeField] float danioMaximo = 45f;
@@ -19,6 +20,7 @@ public class autodestruccion : MonoBehaviour
     }
     private IEnumerator SecuenciaMuerte()
     {
+        
         Debug.Log($"[Autodestrucción] {gameObject.name} va a estallar en {tiempoAntesDeEstallar}s...");
         yield return new WaitForSeconds(tiempoAntesDeEstallar);
         Vector3 puntoImpacto = transform.position;
@@ -56,6 +58,7 @@ public class autodestruccion : MonoBehaviour
         if (miRigidbody != null) miRigidbody.bodyType = RigidbodyType2D.Static;
         if (transform.childCount > 0) transform.GetChild(0).gameObject.SetActive(false);
         OnDetonacionCompletada?.Invoke();
+        Instantiate(prefabTumba,transform.position, transform.rotation);
         Destroy(gameObject, 0.1f);
     }
 }
