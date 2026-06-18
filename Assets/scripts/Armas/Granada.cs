@@ -20,6 +20,7 @@ public class Granada : Arma
 
     public override void Usar()
     {
+        base.Usar();
         if (rb != null)
         {
             float direccionGiro = -1f;
@@ -69,7 +70,9 @@ public class Granada : Arma
         {
             Vida vidaObjetivo = col.GetComponent<Vida>();
             Rigidbody2D rbGusano = col.GetComponent<Rigidbody2D>();
-
+            // ---  ANIMADOR Danio y volar aire ---
+            ControlAnimador animadorEnemigo = col.GetComponentInChildren<ControlAnimador>();
+            // ------------------------------------------------
             float distancia = Vector2.Distance(puntoDeImpacto, col.transform.position);
             float factorCercania = (radioDanio - distancia) / radioDanio;
             factorCercania = Mathf.Clamp01(factorCercania);
@@ -82,6 +85,13 @@ public class Granada : Arma
                 if (danioFinal > 0)
                 {
                     vidaObjetivo.RecibirDanio(danioFinal);
+                    // --- AQUÍ LLAMAMOS A LA ANIMACIÓN DE DOLOR ---
+                    if (animadorEnemigo != null)
+                    {
+                        animadorEnemigo.EjecutarDanio();
+                        animadorEnemigo.ModificarEstadoEmpuje(true);
+                    }
+                    // ---------------------------------------------
                 }
             }
             if (rbGusano != null && factorCercania > 0)
@@ -90,6 +100,7 @@ public class Granada : Arma
                 direccionEmpuje.Normalize();
                 float fuerzaFinal = fuerzaEmpuje * factorCercania;
                 rbGusano.AddForce(direccionEmpuje * fuerzaFinal, ForceMode2D.Impulse);
+                
             }
         }
         if (GetComponent<SpriteRenderer>() != null) GetComponent<SpriteRenderer>().enabled = false;

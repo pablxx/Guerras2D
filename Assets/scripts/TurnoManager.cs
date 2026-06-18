@@ -358,10 +358,17 @@ public class TurnoManager : MonoBehaviour
 
         if (soldadoActivoEnEsteTurno != null)
         {
-            ArmaVisualJugador visualArma = soldadoActivoEnEsteTurno.GetComponentInChildren<ArmaVisualJugador>();
+            
             Debug.Log($"[TurnoManager] Turno de: {soldadoActivoEnEsteTurno.name} al frente de la cola ({equipoQueLeToca})");
             EnfocarSoldadoEspecifico(soldadoActivoEnEsteTurno);
-            visualArma.LimpiarArma();
+            ArmaVisualJugador visualArma = soldadoActivoEnEsteTurno.GetComponentInChildren<ArmaVisualJugador>();
+
+            // Le ponemos un mini escudo protector por si acaso
+            if (visualArma != null)
+            {
+                visualArma.LimpiarArma();
+            }
+            
             AudioManager.Instancia.ReproducirVozConfirmacionAleatoria();
             var mov = soldadoActivoEnEsteTurno.GetComponent<movimientoJugador>();
             if (mov != null)

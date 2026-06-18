@@ -24,6 +24,24 @@ public class Teletransporte : Arma
             GameObject gusanito = TurnoManager.Instancia.soldadoActivoEnEsteTurno;
             Rigidbody2D rbGusanito = gusanito.GetComponent<Rigidbody2D>();
 
+            // --- OBTENEMOS LOS COMPONENTES DE ANIMACIÓN ---
+            ControlAnimador animadorGusanito = gusanito.GetComponentInChildren<ControlAnimador>();
+            Animator animatorBase = gusanito.GetComponentInChildren<Animator>();
+            // 1. Bloqueamos el aburrimiento (lo corta al instante y pausa el reloj)
+            if (animadorGusanito != null)
+
+                // 1. Cortamos cualquier animación de inactividad
+                if (animadorGusanito != null)
+            {
+                animadorGusanito.InterrumpirAburrimiento();
+            }
+
+            // 2. --- ANIMACIÓN PORTAL 1 (DESAPARECER) ---
+            if (animatorBase != null)
+            {
+                animatorBase.SetTrigger("InvocarPortal_1");
+            }
+
             Vector3 posicionDestino = transform.position;
             Collider2D golpeTerreno = Physics2D.OverlapCircle(posicionDestino, radioCuerpo, capaTerreno);
 
@@ -48,32 +66,52 @@ public class Teletransporte : Arma
                 {
                     TurnoManager.Instancia.MostrarNotificacion("¡ERROR! Destino inválido bajo tierra.");
                     yield return new WaitForSeconds(1.5f);
+                    // Liberamos el bloqueo si falló el teletransporte
+                    if (animadorGusanito != null) animadorGusanito.EstablecerBloqueoArmaEspecial(false);
                     TurnoManager.Instancia.StartCoroutine(TurnoManager.Instancia.TemporizadorCambioTurno(null));
                     Destroy(gameObject);
                     yield break;
                 }
             }
+
             if (TurnoManager.Instancia != null)
             {
-                
                 TurnoManager.Instancia.DetenerTemporizadorPorAtaque();
-                TurnoManager.Instancia.MostrarNotificacion("¡Teletransporte completado!");               
+                TurnoManager.Instancia.MostrarNotificacion("¡Teletransporte completado!");
             }
+
             if (rbGusanito != null)
             {
                 rbGusanito.linearVelocity = Vector2.zero;
                 rbGusanito.bodyType = RigidbodyType2D.Kinematic;
             }
+
+            // Esperamos el tiempo de retraso mientras se reproduce InvocarPortal_1
             yield return new WaitForSeconds(retrasoAparicion);
+
+            // Movemos al gusanito a la nueva posición
             gusanito.transform.position = posicionDestino;
+
+            // 3. --- ANIMACIÓN PORTAL 2 (APARECER) ---
+            if (animatorBase != null)
+            {
+                animatorBase.SetTrigger("InvocarPortal_2");
+            }
+
             if (rbGusanito != null)
             {
                 rbGusanito.bodyType = RigidbodyType2D.Dynamic;
             }
+
             yield return new WaitForSeconds(0.5f);
             TurnoManager.Instancia.StartCoroutine(TurnoManager.Instancia.TemporizadorCambioTurno(null));
         }
-        AudioManager.Instancia.PlayDestrucciones(audioFinalizar);
+
+        if (AudioManager.Instancia != null)
+        {
+            AudioManager.Instancia.PlayDestrucciones(audioFinalizar);
+        }
+
         Destroy(gameObject, 0.1f);
     }
 

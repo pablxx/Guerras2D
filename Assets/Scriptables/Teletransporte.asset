@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9c7cb3a5661a0b4ebc0ddcb3c0d0c06, type: 3}
   m_Name: Teletransporte
   m_EditorClassIdentifier: 
+  IDAnimacion: 0
   Tipo: 4
   NombreArma: Teletransporte
-  Icono: {fileID: 21300000, guid: ac2d8d1b24cadb847accea12a992e37e, type: 3}
+  Icono: {fileID: -5816642994671486895, guid: f696318cb5c673d42a23f73416307562, type: 3}
   Descripcion: Muevete a cualquier lugar
   RadioExplosion: 0
   RadioDanio: 0

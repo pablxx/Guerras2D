@@ -14,11 +14,13 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource canalEfectos;
     [SerializeField] AudioSource canalDestrucciones;
     [SerializeField] AudioSource canalVoces;
+    [SerializeField] AudioSource canalExplosiones;
 
     [Header("Control de Volumen")]
     [Range(0f, 1f)][SerializeField] private float volumenMusica = 0.4f;
     [Range(0f, 1f)][SerializeField] private float volumenEfectos = 0.8f;
     [Range(0f, 1f)][SerializeField] private float volumenVoces = 0.8f;
+    [Range(0f, 1f)][SerializeField] private float volumenExplosiones = 0.8f;
 
     [Header("Lista de Músicas de Fondo")]
     [SerializeField] public List<AudioClip> listaMusicas;
@@ -61,6 +63,7 @@ public class AudioManager : MonoBehaviour
         if (canalEfectos != null) canalEfectos.volume = volumenEfectos;
         if (canalDestrucciones != null) canalDestrucciones.volume = volumenEfectos;
         if (canalVoces != null) canalVoces.volume = volumenVoces;
+        if (canalExplosiones != null) canalExplosiones.volume = volumenExplosiones;
     }
 
     public void PlaySonidoSalto(int indice)
@@ -230,14 +233,14 @@ public class AudioManager : MonoBehaviour
     // AudioManager.Instancia.PlayExplosionAleatoria()
     public void PlayExplosionAleatoria()
     {
-        if (sonidosExplosiones == null || sonidosExplosiones.Count == 0) return;
+        if (canalExplosiones == null || sonidosExplosiones == null || sonidosExplosiones.Count == 0) return;
 
         int indiceAleatorio = Random.Range(0, sonidosExplosiones.Count);
         AudioClip clipSeleccionado = sonidosExplosiones[indiceAleatorio];
 
         if (clipSeleccionado != null)
         {
-            canalEfectos.PlayOneShot(clipSeleccionado);
+            canalExplosiones.PlayOneShot(clipSeleccionado);
         }
     }
 
@@ -247,6 +250,7 @@ public class AudioManager : MonoBehaviour
         if (canalDestrucciones != null) canalDestrucciones.Stop();
         if (canalMusica != null) canalMusica.Stop();
         if (canalVoces != null) canalVoces.Stop();
+        if (canalExplosiones != null) canalExplosiones.Stop();
     }
 
     public void ReproducirMusicaJuegoAleatoria()

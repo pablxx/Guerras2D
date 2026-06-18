@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KamikazeEmbestidaDTerrain : Arma
+public class Kamikaze : Arma
 {
     [Header("Configuración del Avance (Ajustes de Prefab)")]
     [SerializeField] private float velocidadEmbestida = 15f;
@@ -10,6 +10,10 @@ public class KamikazeEmbestidaDTerrain : Arma
     [SerializeField] private float frecuenciaDestruccion = 0.05f;
     [SerializeField] private float elevacionExplosion = 0.5f;
     [SerializeField] private GameObject prefabEfectoExplosion;
+
+    [Header("Ajustes de Empuje en Carrera")]
+    [SerializeField] private float fuerzaEmpujeEnCarrera = 8f;
+    [SerializeField] private float offsetRadioCarrera = 0.5f; // Offset para ajustar el alcance del Overlap en carrera
 
     private GameObject soldadoDueno;
     private Rigidbody2D rbDueno;
@@ -58,6 +62,7 @@ public class KamikazeEmbestidaDTerrain : Arma
         if (scriptMovimientoDueno != null)
         {
             scriptMovimientoDueno.atacando = true;
+            scriptMovimientoDueno.enabled = false;
         }
 
         float tiempoTranscurrido = 0f;
@@ -79,6 +84,7 @@ public class KamikazeEmbestidaDTerrain : Arma
                 if (temporizadorDestruccion >= frecuenciaDestruccion)
                 {
                     MorderTerrenoEnAvance(transform.position, radioExplosion);
+                    EmpujarEnemigosEnElCamino(transform.position);
                     temporizadorDestruccion = 0f;
                 }
             }
@@ -104,6 +110,32 @@ public class KamikazeEmbestidaDTerrain : Arma
         {
             destructorTerrain.CambiarTamaño(radio);
             destructorTerrain.EjecutarDestruccion(punto);
+        }
+    }
+
+    private void EmpujarEnemigosEnElCamino(Vector3 punto)
+    {
+        // Se calcula el radio base y se le inyecta quirúrgicamente el offset de alcance
+        float radioDeteccion = (radioExplosion / 10f) + offsetRadioCarrera;
+        Collider2D[] detectados = Physics2D.OverlapCircleAll(punto, radioDeteccion);
+
+        foreach (Collider2D col in detectados)
+        {
+            if (col.gameObject == soldadoDueno) continue;
+
+            Rigidbody2D rbEnemigo = col.GetComponent<Rigidbody2D>();
+            if (rbEnemigo != null)
+            {
+                rbEnemigo.linearVelocity = Vector2.zero;
+                Vector2 dirEmpuje = new Vector2(direccionX, 0.7f).normalized;
+                rbEnemigo.AddForce(dirEmpuje * fuerzaEmpujeEnCarrera, ForceMode2D.Impulse);
+
+                movimientoJugador movEnemigo = col.GetComponent<movimientoJugador>();
+                if (movEnemigo != null)
+                {
+                    movEnemigo.enabled = true;
+                }
+            }
         }
     }
 
@@ -149,6 +181,12 @@ public class KamikazeEmbestidaDTerrain : Arma
                 rbGusano.linearVelocity = Vector2.zero;
                 Vector2 direccionEmpujeFinal = new Vector2(direccionX, elevacionExplosion).normalized;
                 rbGusano.AddForce(direccionEmpujeFinal * fuerzaEmpuje, ForceMode2D.Impulse);
+
+                movimientoJugador movEnemigo = col.GetComponent<movimientoJugador>();
+                if (movEnemigo != null)
+                {
+                    movEnemigo.enabled = true;
+                }
             }
         }
 
@@ -176,8 +214,10 @@ public class KamikazeEmbestidaDTerrain : Arma
 
     private void OnDrawGizmos()
     {
+       
+        float radioDeteccionVisual = (radioExplosion / 10f) + offsetRadioCarrera;
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, radioExplosion / 10f);
+        Gizmos.DrawWireSphere(transform.position, radioDeteccionVisual);
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, radioDanio);

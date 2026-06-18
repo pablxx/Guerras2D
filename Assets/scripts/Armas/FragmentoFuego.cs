@@ -27,6 +27,9 @@ public class FragmentoFuego : MonoBehaviour
 
     private DTerrain.ClickAndDestroyOptimized destructorTerrain;
     private ParticleSystem sistemaParticulasAsignado = null;
+    // ANIMACION QUEMANDOSE
+    // --- LISTA PARA GUARDAR A LOS GUSANOS QUE ESTÁN ARDIENDO ---
+    private List<ControlAnimador> victimasEnLlamas = new List<ControlAnimador>();
 
     public void InicializarFragmento(SecuenciadorMolotov spawnerPadre, bool esElUltimoMisil, float tiempoMecha)
     {
@@ -120,6 +123,8 @@ public class FragmentoFuego : MonoBehaviour
             var emision = sistemaParticulasAsignado.emission;
             emision.enabled = false;
         }
+        // --- APAGAMOS EL FUEGO DE LAS VÍCTIMAS ANTES DE MORIR ---
+        ApagarVictimas();
 
         if (soyElUltimo && TurnoManager.Instancia != null && miSecuenciador != null)
         {
@@ -142,10 +147,18 @@ public class FragmentoFuego : MonoBehaviour
             if (vidaObjetivo != null)
             {
                 float danioFinal = miSecuenciador != null ? miSecuenciador.ObtenerDanioMaximo() : danioCalculado;
+                // --- ESTA ES LA LÍNEA QUE FALTABA ---
+                ControlAnimador animadorEnemigo = col.GetComponentInChildren<ControlAnimador>();
 
                 if (danioFinal > 0)
                 {
                     vidaObjetivo.RecibirDanio(danioFinal);
+                    // --- ENCENDER ANIMACIÓN DE QUEMADURA ---
+                    if (animadorEnemigo != null && !victimasEnLlamas.Contains(animadorEnemigo))
+                    {
+                        animadorEnemigo.ModificarEstadoQuemaduras(true);
+                        victimasEnLlamas.Add(animadorEnemigo);
+                    }
                 }
             }
         }
@@ -178,6 +191,18 @@ public class FragmentoFuego : MonoBehaviour
                 }
             }
         }
+    }
+    // --- FUNCIÓN PARA LIMPIAR LA ANIMACIÓN DE QUEMARSE ---
+    private void ApagarVictimas()
+    {
+        foreach (ControlAnimador victima in victimasEnLlamas)
+        {
+            if (victima != null)
+            {
+                victima.ModificarEstadoQuemaduras(false);
+            }
+        }
+        victimasEnLlamas.Clear();
     }
 
     private void OnDrawGizmos()

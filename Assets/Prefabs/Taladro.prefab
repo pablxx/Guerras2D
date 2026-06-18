@@ -44,8 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf869353ac7975347b83aa872562fcfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadEmbestida: 10
-  duracionMaximaAvance: 1.5
+  velocidadEmbestida: 5
   frecuenciaDestruccion: 0.04
   offsetInicialAbajo: 0.5
-  prefabEfectoPolvo: {fileID: 0}
+  prefabEfectoPolvo: {fileID: 8282062137501660915, guid: 7ea16efc09f8a1e46bc3c6edb63777b0, type: 3}

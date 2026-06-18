@@ -42,6 +42,7 @@ public class Silla : Arma
     {
         if (Explotar == true)
         {
+           
             mostrarRadioImpacto = true;
             Explotar = false;
 
@@ -78,7 +79,8 @@ public class Silla : Arma
             {
                 Vida vidaObjetivo = col.GetComponent<Vida>();
                 Rigidbody2D rbGusano = col.GetComponent<Rigidbody2D>();
-
+                // --- BUSCAMOS EL ANIMADOR DEL GUSANO ---
+                ControlAnimador animadorEnemigo = col.GetComponentInChildren<ControlAnimador>();
                 float distancia = Vector2.Distance(puntoImpacto, col.transform.position);
                 float factorCercania = (radioDanio - distancia) / radioDanio;
                 factorCercania = Mathf.Clamp01(factorCercania);
@@ -93,6 +95,11 @@ public class Silla : Arma
                     if (danioFinal > 0)
                     {
                         vidaObjetivo.RecibirDanio(danioFinal);
+                        // --- TRIGER DE DOLOR ---
+                        if (animadorEnemigo != null)
+                        {
+                            animadorEnemigo.EjecutarDanio();
+                        }
                     }
                 }
 
@@ -102,6 +109,11 @@ public class Silla : Arma
                     direccionEmpuje.Normalize();
                     float fuerzaFinal = fuerzaEmpuje * factorCercania;
                     rbGusano.AddForce(direccionEmpuje * fuerzaFinal, ForceMode2D.Impulse);
+                    // --- TRIGER DE VUELO (EXPLOSIÓN AIRE) ---
+                    if (animadorEnemigo != null && fuerzaFinal > 0.5f)
+                    {
+                        animadorEnemigo.ModificarEstadoEmpuje(true);
+                    }
                 }
             }
 
@@ -114,7 +126,7 @@ public class Silla : Arma
 
             if (AudioManager.Instancia != null)
             {
-                AudioManager.Instancia.PlayExplosionAleatoria();
+                AudioManager.Instancia.PlaySFXPorIndice(5);
             }
         }
     }

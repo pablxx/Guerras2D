@@ -40,6 +40,24 @@ public class Pistola : Arma
         posicionOrigenMemorizada = posicion;
         rotacionOrigenMemorizada = rotacion;
         direccionDisparoMemorizada = direccion.normalized;
+
+        // Inyección quirúrgica: Volteamos el eje Y del propio padre según hacia dónde mire el gusanito activo
+        if (TurnoManager.Instancia != null && TurnoManager.Instancia.soldadoActivoEnEsteTurno != null)
+        {
+            Vector3 escalaActual = transform.localScale;
+
+            if (TurnoManager.Instancia.soldadoActivoEnEsteTurno.transform.localScale.x < 0)
+            {
+                // Espejo en Y para corregir el visual cuando apunta a la izquierda
+                transform.localScale = new Vector3(Mathf.Abs(escalaActual.x), -Mathf.Abs(escalaActual.y), escalaActual.z);
+            }
+            else
+            {
+                // Escala normal cuando apunta a la derecha
+                transform.localScale = new Vector3(Mathf.Abs(escalaActual.x), Mathf.Abs(escalaActual.y), escalaActual.z);
+            }
+        }
+
         configuracionInicialLista = true;
     }
 
@@ -145,6 +163,11 @@ public class Pistola : Arma
             {
                 vidasProcesadasEnEsteTiro.Add(vidaObjetivo);
                 vidaObjetivo.RecibirDanio(danioMaximo);
+                ControlAnimador animadorEnemigo = collision.GetComponentInChildren<ControlAnimador>();
+                if (animadorEnemigo != null)
+                {
+                    animadorEnemigo.EjecutarDanio();
+                }
             }
         }
         var destructor = Object.FindFirstObjectByType<DTerrain.ClickAndDestroyOptimized>();

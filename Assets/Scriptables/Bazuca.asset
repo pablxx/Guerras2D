@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9c7cb3a5661a0b4ebc0ddcb3c0d0c06, type: 3}
   m_Name: Bazuca
   m_EditorClassIdentifier: 
+  IDAnimacion: 0
   Tipo: 0
   NombreArma: Bazuca
-  Icono: {fileID: 21300000, guid: 2095598077302934ea2b921312129f43, type: 3}
+  Icono: {fileID: 3967848678615200411, guid: 93b46e577abc93c4fbcf33a167849a64, type: 3}
   Descripcion: Arma Basica de Explosion
   RadioExplosion: 30
   RadioDanio: 2
@@ -24,4 +25,4 @@ MonoBehaviour:
   Temporizador: 0
   TiempoExplosion: 0
   Rafagas: 0
-  AudioInstancia: {fileID: 0}
+  AudioInstancia: {fileID: 8300000, guid: b5dbf7faac792a74781c2e6f66e0de2a, type: 3}

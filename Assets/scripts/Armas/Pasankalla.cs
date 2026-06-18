@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PistolaBazuca : Arma
+public class Pasankalla : Arma
 {
     [Header("Configuración del Proyectil Autónomo")]
     [SerializeField] private float velocidadBala = 25f;
     [SerializeField] private GameObject prefabParticulas;
+    [SerializeField] private float velocidadRotacionVisual = 720f; // Grados por segundo al girar en el aire
 
     [Header("Retroceso del Jugador")]
     [SerializeField] private float fuerzaRetrocesoJugador = 40f;
 
     bool Explotar = true;
     bool mostrarRadioImpacto = false;
+    private bool volando = false;
+    private float sentidoGiro = -1f;
 
     private void Start()
     {
@@ -30,6 +33,11 @@ public class PistolaBazuca : Arma
                 if (soldadoActivo.transform.localScale.x < 0)
                 {
                     trajectoryDirection = -trajectoryDirection;
+                    sentidoGiro = 1f; // Invierte el giro visual si dispara a la izquierda
+                }
+                else
+                {
+                    sentidoGiro = -1f;
                 }
 
                 Rigidbody2D rbSoldado = soldadoActivo.GetComponent<Rigidbody2D>();
@@ -42,6 +50,16 @@ public class PistolaBazuca : Arma
             }
 
             rb.linearVelocity = trajectoryDirection.normalized * velocidadBala;
+            volando = true; // Activamos el switch para que empiece a rotar en el Update
+        }
+    }
+
+    private void Update()
+    {
+        // Inyección quirúrgica: Si el proyectil está viajando, rota su transform en el eje Z
+        if (volando)
+        {
+            transform.Rotate(0f, 0f, velocidadRotacionVisual * sentidoGiro * Time.deltaTime);
         }
     }
 
@@ -49,6 +67,7 @@ public class PistolaBazuca : Arma
     {
         if (Explotar == true)
         {
+            volando = false; // Apagamos el giro visual al impactar
             mostrarRadioImpacto = true;
             Explotar = false;
 
@@ -59,6 +78,9 @@ public class PistolaBazuca : Arma
 
             Vector3 puntoImpacto = collision.contacts[0].point;
             transform.position = puntoImpacto;
+
+            // Aseguramos que la rotación se congele limpiamente al estallar
+            transform.rotation = Quaternion.identity;
 
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
             if (rb != null)
@@ -90,6 +112,7 @@ public class PistolaBazuca : Arma
             {
                 Vida vidaObjetivo = col.GetComponent<Vida>();
                 Rigidbody2D rbGusano = col.GetComponent<Rigidbody2D>();
+                ControlAnimador animadorEnemigo = col.GetComponentInChildren<ControlAnimador>();
 
                 float distancia = Vector2.Distance(puntoImpacto, col.transform.position);
                 float factorCercania = (radioDanio - distancia) / radioDanio;
@@ -104,6 +127,10 @@ public class PistolaBazuca : Arma
                     if (danioFinal > 0)
                     {
                         vidaObjetivo.RecibirDanio(danioFinal);
+                        if (animadorEnemigo != null)
+                        {
+                            animadorEnemigo.EjecutarDanio();
+                        }
                     }
                 }
 
@@ -113,6 +140,10 @@ public class PistolaBazuca : Arma
                     direccionEmpuje.Normalize();
                     float fuerzaFinal = fuerzaEmpuje * factorCercania;
                     rbGusano.AddForce(direccionEmpuje * fuerzaFinal, ForceMode2D.Impulse);
+                    if (animadorEnemigo != null && fuerzaFinal > 0.5f)
+                    {
+                        animadorEnemigo.ModificarEstadoEmpuje(true);
+                    }
                 }
             }
 

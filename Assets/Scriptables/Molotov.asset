@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9c7cb3a5661a0b4ebc0ddcb3c0d0c06, type: 3}
   m_Name: Molotov
   m_EditorClassIdentifier: 
+  IDAnimacion: 0
   Tipo: 3
   NombreArma: Molotov
-  Icono: {fileID: 21300000, guid: 359bb21471cac3e40bf9d0c2fc1e7af8, type: 3}
+  Icono: {fileID: 21300000, guid: 97a71d67d0204894d858e88953e42384, type: 3}
   Descripcion: Lluvia de fuego
   RadioExplosion: 5
   RadioDanio: 1
@@ -22,6 +23,6 @@ MonoBehaviour:
   FuerzaEmpuje: 5
   PrefabArma: {fileID: 3271280549089761344, guid: d6b8cb06462cbbe4dadc35c4acd0baee, type: 3}
   Temporizador: 1
-  TiempoExplosion: 10
+  TiempoExplosion: 7
   Rafagas: 10
-  AudioInstancia: {fileID: 0}
+  AudioInstancia: {fileID: 8300000, guid: 63131ba503a040f4abc877c59ef1f049, type: 3}

@@ -229,7 +229,7 @@ ScriptedImporter:
     spritePosition: {x: 39, y: 13}
   - name: chulo
     originalName: 
-    pivot: {x: 0.47876436, y: 0.6068462}
+    pivot: {x: 0.53401434, y: 0.57502764}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 

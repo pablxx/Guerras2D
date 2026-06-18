@@ -43,7 +43,9 @@ public class Bazuca : Arma
             {
                 Vida vidaObjetivo = col.GetComponent<Vida>();
                 Rigidbody2D rbGusano = col.GetComponent<Rigidbody2D>();
-
+                //--- ¡ANIMACION DANIO Y VOLAR AIRE!---
+                ControlAnimador animadorEnemigo = col.GetComponentInChildren<ControlAnimador>();
+                // --------------------------------------
                 float distancia = Vector2.Distance(puntoImpacto, col.transform.position);
                 float factorCercania = (radioDanio - distancia) / radioDanio;
                 factorCercania = Mathf.Clamp01(factorCercania);
@@ -58,6 +60,13 @@ public class Bazuca : Arma
                     if (danioFinal > 0)
                     {
                         vidaObjetivo.RecibirDanio(danioFinal);
+                        // --- AQUÍ LLAMAMOS A LA ANIMACIÓN DE DOLOR ---
+                        if (animadorEnemigo != null)
+                        {
+                            animadorEnemigo.EjecutarDanio();
+                            animadorEnemigo.ModificarEstadoEmpuje(true);// El gusano se queja del daño
+                        }
+                        // ---------------------------------------------
                     }
                 }
 
@@ -67,6 +76,8 @@ public class Bazuca : Arma
                     direccionEmpuje.Normalize();
                     float fuerzaFinal = fuerzaEmpuje * factorCercania;
                     rbGusano.AddForce(direccionEmpuje * fuerzaFinal, ForceMode2D.Impulse);
+                  
+
                 }
             }
             if (GetComponent<SpriteRenderer>() != null) GetComponent<SpriteRenderer>().enabled = false;

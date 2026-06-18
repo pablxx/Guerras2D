@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9c7cb3a5661a0b4ebc0ddcb3c0d0c06, type: 3}
   m_Name: Metralleta
   m_EditorClassIdentifier: 
+  IDAnimacion: 0
   Tipo: 5
   NombreArma: Metralleta
-  Icono: {fileID: 21300000, guid: 062187740e0799f40a2faa0a3b6ddd2d, type: 3}
+  Icono: {fileID: -515002997621473561, guid: c80fe77a953c35c408361a2dadca5e10, type: 3}
   Descripcion: Disparos seguidos
   RadioExplosion: 15
   RadioDanio: 0

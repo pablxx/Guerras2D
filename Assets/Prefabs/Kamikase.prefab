@@ -44,11 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fda212a4297de1d4ea89dd34c79c9e7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadEmbestida: 5
+  velocidadEmbestida: 4
   duracionMaximaAvance: 3
-  radioDestruccionCamino: 35
   frecuenciaDestruccion: 0.05
   elevacionExplosion: 0.5
-  radioDestruccionFinal: 50
-  fuerzaEmpujeMaximo: 25
-  prefabEfectoExplosion: {fileID: 0}
+  prefabEfectoExplosion: {fileID: 8282062137501660915, guid: e44ab0f584762014b833a9d395369194, type: 3}
+  fuerzaEmpujeEnCarrera: 8
+  offsetRadioCarrera: -2

@@ -5,6 +5,8 @@ using UnityEngine;
 public class MisilAereo : MonoBehaviour
 {
     [SerializeField] private float velocidadCaida = 15f;
+    [SerializeField] private GameObject prefabParticulas; 
+
     private Rigidbody2D rb;
     private SecuenciadorAereo miSecuenciador;
     private bool yaExplotó = false;
@@ -12,6 +14,7 @@ public class MisilAereo : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.Instancia.PlaySFXPorIndice(9);
         rb = GetComponent<Rigidbody2D>();
         if (rb != null)
         {
@@ -55,6 +58,13 @@ public class MisilAereo : MonoBehaviour
         }
 
         if (GetComponent<Collider2D>() != null) GetComponent<Collider2D>().enabled = false;
+
+        // Inyección quirúrgica: Instanciar los efectos visuales de la explosión
+        if (prefabParticulas != null)
+        {
+            Instantiate(prefabParticulas, puntoImpacto, Quaternion.identity);
+        }
+
         int radioExplosionPadre = miSecuenciador.ObtenerRadioExplosion();
         float radioDanioPadre = miSecuenciador.ObtenerRadioDanio();
         int danioMaximoPadre = miSecuenciador.ObtenerDanioMaximo();
@@ -72,6 +82,7 @@ public class MisilAereo : MonoBehaviour
         {
             Vida vidaObjetivo = col.GetComponent<Vida>();
             Rigidbody2D rbGusano = col.GetComponent<Rigidbody2D>();
+            ControlAnimador animadorEnemigo = col.GetComponentInChildren<ControlAnimador>();
 
             float distancia = Vector2.Distance(puntoImpacto, col.transform.position);
             float factorCercania = (radioDanioPadre - distancia) / radioDanioPadre;
@@ -83,7 +94,15 @@ public class MisilAereo : MonoBehaviour
                 vidasProcesadas.Add(vidaObjetivo);
 
                 float danioFinal = danioMaximoPadre * factorCercania;
-                if (danioFinal > 0) vidaObjetivo.RecibirDanio(danioFinal);
+                if (danioFinal > 0)
+                {
+                    vidaObjetivo.RecibirDanio(danioFinal);
+
+                    if (animadorEnemigo != null)
+                    {
+                        animadorEnemigo.EjecutarDanio();
+                    }
+                }
             }
 
             if (rbGusano != null && factorCercania > 0)
@@ -101,7 +120,7 @@ public class MisilAereo : MonoBehaviour
             Destroy(miSecuenciador.gameObject);
             TurnoManager.Instancia.StartCoroutine(TurnoManager.Instancia.TemporizadorCambioTurno(null));
         }
-
+        AudioManager.Instancia.PlayExplosionAleatoria();
         Destroy(gameObject, 0.1f);
     }
 }

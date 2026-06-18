@@ -11,6 +11,7 @@ public class SecuenciadorMolotov : Arma
 
     private void Start()
     {
+        base.Usar();
         transform.position = new Vector3(transform.position.x, transform.position.y + alturaCieloY, 0f);
         StartCoroutine(RutinaBombardeoOrdenado());
     }

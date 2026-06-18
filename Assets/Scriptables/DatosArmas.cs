@@ -11,6 +11,11 @@ public class DatosArmas : ScriptableObject
         Invocable,
         ArmaFuego
     }
+
+    //-----PARA ANIMACION DE ARMAS----/
+    // ¡NUEVO! Este será el identificador para tus animaciones
+    [SerializeField] int IDAnimacion;
+    //------------------------------
     [SerializeField] TipoArma Tipo;
     [SerializeField] string NombreArma;
     [SerializeField] Sprite Icono;
@@ -40,4 +45,7 @@ public class DatosArmas : ScriptableObject
     public bool temporizador => Temporizador;
     public int rafagas => Rafagas;
     public AudioClip audioInstancia => AudioInstancia;
+    // PARA ANIMACION DE ARMAS//
+    public int idAnimacion => IDAnimacion;
+    //-------------------------//
 }

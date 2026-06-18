@@ -119,7 +119,9 @@ public class AncianaSuicida : Arma
         {
             Vida vidaObjetivo = col.GetComponent<Vida>();
             Rigidbody2D rbGusano = col.GetComponent<Rigidbody2D>();
-
+            // --- BUSCAMOS EL SCRIPT DE ANIMACIÓN DEL ENEMIGO ---
+            ControlAnimador animadorEnemigo = col.GetComponentInChildren<ControlAnimador>();
+            //---------------------
             float distancia = Vector2.Distance(puntoDeImpacto, col.transform.position);
             float factorCercania = (radioDanio - distancia) / radioDanio;
             factorCercania = Mathf.Clamp01(factorCercania);
@@ -130,7 +132,17 @@ public class AncianaSuicida : Arma
                 vidasProcesadasEnEsteImpacto.Add(vidaObjetivo);
 
                 float danioFinal = danioMaximo * factorCercania;
-                if (danioFinal > 0) vidaObjetivo.RecibirDanio(danioFinal);
+                //if (danioFinal > 0) vidaObjetivo.RecibirDanio(danioFinal);
+                if (danioFinal > 0)
+                {
+                    vidaObjetivo.RecibirDanio(danioFinal);
+
+                    // --- TRIGER DE DOLOR (GOLPEADO) ---
+                    if (animadorEnemigo != null)
+                    {
+                        animadorEnemigo.EjecutarDanio();
+                    }
+                }
             }
 
             if (rbGusano != null && factorCercania > 0)
@@ -139,6 +151,11 @@ public class AncianaSuicida : Arma
                 direccionEmpuje.Normalize();
                 float fuerzaFinal = fuerzaEmpuje * factorCercania;
                 rbGusano.AddForce(direccionEmpuje * fuerzaFinal, ForceMode2D.Impulse);
+                // --- TRIGER DE VUELO (EXPLOSION AIRE) ---
+                if (animadorEnemigo != null && fuerzaFinal > 0.5f)
+                {
+                    animadorEnemigo.ModificarEstadoEmpuje(true);
+                }
             }
         }
 

@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9c7cb3a5661a0b4ebc0ddcb3c0d0c06, type: 3}
   m_Name: Kamikase
   m_EditorClassIdentifier: 
+  IDAnimacion: 3
   Tipo: 2
   NombreArma: Kamikase
-  Icono: {fileID: 21300000, guid: b156b49fa4b33e04992aff9c2543332d, type: 3}
+  Icono: {fileID: 21300000, guid: 0f4f47448f51f2548894823689259e82, type: 3}
   Descripcion: 'matate para ganar la guerra
 
 '

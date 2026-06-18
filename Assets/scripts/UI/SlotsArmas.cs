@@ -52,13 +52,21 @@ using UnityEngine.EventSystems;
         }
 
         public void AlHacerClicEnSlot()
-        {            
-            panelPrincipal.SeleccionarArma(armaAsignada);
+        {
+        if (armaAsignada.nombreArma == "Pistola" && AudioManager.Instancia != null)
+        {
+            AudioManager.Instancia.PlaySFXPorIndice(7);
+        }
+        if (armaAsignada.nombreArma == "Metralleta" && AudioManager.Instancia != null)
+        {
+            AudioManager.Instancia.PlaySFXPorIndice(8);
+        }
+        panelPrincipal.SeleccionarArma(armaAsignada);
         if (TurnoManager.Instancia != null && TurnoManager.Instancia.soldadoActivoEnEsteTurno != null)
         {
             if (PanelInventario.Instancia != null && PanelInventario.Instancia.ArmaEquipadaActiva != null)
             {
-                TurnoManager.Instancia.soldadoActivoEnEsteTurno.gameObject.GetComponentInChildren<ArmaVisualJugador>().RenderizarArma(PanelInventario.Instancia.ArmaEquipadaActiva.icono);             
+                TurnoManager.Instancia.soldadoActivoEnEsteTurno.gameObject.GetComponentInChildren<ArmaVisualJugador>().RenderizarArma(PanelInventario.Instancia.ArmaEquipadaActiva.icono);
             }
             camaraMovimiento scriptCamara = Camera.main.GetComponent<camaraMovimiento>();
             if (scriptCamara != null)

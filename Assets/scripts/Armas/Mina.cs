@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Mina : Arma
@@ -11,11 +12,12 @@ public class Mina : Arma
     [Header("Visuales de Alerta")]
     [SerializeField] private SpriteRenderer spriteMina;
     [SerializeField] private Color colorAlerta = Color.red;
+    [SerializeField] private GameObject prefabParticulas; // Ranura para las partículas de explosión
 
     private Rigidbody2D rb;
     private bool estaArmada = false;
     private bool yaSeActivo = false;
-    
+
 
     private void Start()
     {
@@ -113,6 +115,13 @@ public class Mina : Arma
     private void EjecutarExplosionFinal(GameObject victima)
     {
         Vector3 puntoImpacto = transform.position;
+
+        // Inyección quirúrgica: Instanciar las partículas de explosión en el punto exacto
+        if (prefabParticulas != null)
+        {
+            Instantiate(prefabParticulas, puntoImpacto, Quaternion.identity);
+        }
+
         var destructor = Object.FindFirstObjectByType<DTerrain.ClickAndDestroyOptimized>();
         if (destructor != null)
         {
@@ -140,7 +149,8 @@ public class Mina : Arma
                 rbVictima.AddForce(direccionEmpuje * fuerzaEmpuje, ForceMode2D.Impulse);
             }
         }
-        if (spriteMina != null) spriteMina.enabled = false;    
+        if (spriteMina != null) spriteMina.enabled = false;
+        AudioManager.Instancia.PlayExplosionAleatoria();
         Destroy(gameObject, 0.1f);
     }
 
@@ -162,7 +172,7 @@ public class Mina : Arma
 
     public override void Usar()
     {
-        
+        base.Usar();
     }
 
     private void OnDrawGizmosSelected()

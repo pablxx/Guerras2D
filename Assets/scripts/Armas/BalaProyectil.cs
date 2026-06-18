@@ -88,6 +88,14 @@ public class BalaProyectil : MonoBehaviour
         {
             vidasProcesadasEnEsteImpacto.Add(vidaObjetivo);
             vidaObjetivo.RecibirDanio(danio);
+            // --- AQUÍ LLAMAMOS A LA ANIMACIÓN DE DOLOR ---
+            // Buscamos el ControlAnimador en el gusano que acabamos de chocar
+            ControlAnimador animadorEnemigo = collision.GetComponentInChildren<ControlAnimador>();
+            if (animadorEnemigo != null)
+            {
+                animadorEnemigo.EjecutarDanio();
+            }
+            // ---------------------------------------------
         }
 
         var destructor = Object.FindFirstObjectByType<DTerrain.ClickAndDestroyOptimized>();

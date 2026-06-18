@@ -88,7 +88,9 @@ public class Dinamita : Arma
         {
             Vida vidaObjetivo = col.GetComponent<Vida>();
             Rigidbody2D rbGusano = col.GetComponent<Rigidbody2D>();
-
+            // --- BUSCAMOS EL SCRIPT DE ANIMACIÓN DEL ENEMIGO ---
+            ControlAnimador animadorEnemigo = col.GetComponentInChildren<ControlAnimador>();
+            // ---------------------------------------------------
             float distancia = Vector2.Distance(puntoImpacto, col.transform.position);
             float factorCercania = (radioDanio - distancia) / radioDanio;
             factorCercania = Mathf.Clamp01(factorCercania);
@@ -102,6 +104,11 @@ public class Dinamita : Arma
                 if (danioFinal > 0)
                 {
                     vidaObjetivo.RecibirDanio(danioFinal);
+                    // --- TRIGER DE DOLOR ---
+                    if (animadorEnemigo != null)
+                    {
+                        animadorEnemigo.EjecutarDanio();
+                    }
                 }
             }
 
@@ -116,6 +123,11 @@ public class Dinamita : Arma
                 direccionEmpuje.Normalize();
 
                 rbGusano.AddForce(direccionEmpuje * fuerzaEmpuje, ForceMode2D.Impulse);
+                // --- TRIGER DE VUELO (EXPLOSION AIRE) ---
+                if (animadorEnemigo != null && fuerzaEmpuje > 0.5f)
+                {
+                    animadorEnemigo.ModificarEstadoEmpuje(true);
+                }
             }
         }
 

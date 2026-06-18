@@ -53,6 +53,14 @@ public class movimientoJugador : MonoBehaviour
     private bool backflipUsado = false;
     private bool haciendoBackflip = false;
 
+    // --- NUESTROS ESPEJOS PARA LA ANIMACIÓN ---
+    public bool animacionArmaEquipada => this.enabled && PanelInventario.Instancia != null && PanelInventario.Instancia.ArmaEquipadaActiva != null && PanelInventario.Instancia.PermisoAtacar;
+    public bool animacionCargando => this.enabled && cargandoDisparo;
+    public bool animacionAtacando => this.enabled && atacando;
+    public int animacionTipoArma => (this.enabled && PanelInventario.Instancia != null && PanelInventario.Instancia.ArmaEquipadaActiva != null) ? (int)PanelInventario.Instancia.ArmaEquipadaActiva.tipo : -1;
+    public int animacionID => (this.enabled && PanelInventario.Instancia != null && PanelInventario.Instancia.ArmaEquipadaActiva != null) ? PanelInventario.Instancia.ArmaEquipadaActiva.idAnimacion : 0;
+    // ------------------------------------------
+
     void Start()
     {
         input = GetComponent<PlayerInput>();
@@ -83,10 +91,13 @@ public class movimientoJugador : MonoBehaviour
         {
             movimiento = Vector2.zero;
             DestruirMiraMouse();
-            return;
+            //return;
         }
-
-        movimiento = mover.ReadValue<Vector2>();
+        else
+        {
+            movimiento = mover.ReadValue<Vector2>(); // El movimiento normal solo ocurre si no ataca
+        }
+        //movimiento = mover.ReadValue<Vector2>();
         MiAnimador.ActualizarCaminata(rb2d.linearVelocity.x);
 
         if (EstaEnSuelo() && !haciendoBackflip)
@@ -252,6 +263,9 @@ public class movimientoJugador : MonoBehaviour
         {
             if (!cargandoDisparo)
             {
+                // --- CORTAMOS ABURRIMIENTO AL EMPEZAR A CARGAR ---
+                if (MiAnimador != null) MiAnimador.InterrumpirAburrimiento();
+                //--------------------------------------------------------------
                 cargandoDisparo = true;
                 fuerzaActual = fuerzaMinima;
                 direccionCarga = 1;
@@ -297,13 +311,36 @@ public class movimientoJugador : MonoBehaviour
 
     void EjecutarAtaqueInstantaneo(bool esMelee)
     {
+        // --- CORTAMOS ABURRIMIENTO AL EMPEZAR A CARGAR ---
+        if (MiAnimador != null) MiAnimador.InterrumpirAburrimiento();
+        //--------------------------------------------------------------
         PanelInventario.Instancia.PermisoAtacar = false;
         atacando = true;
-
+     
         DatosArmas armaSeleccionada = PanelInventario.Instancia.ArmaEquipadaActiva;
         PanelInventario.Instancia.DescontarArma(armaSeleccionada);
-        ArmaVisualJugador visualArma = gameObject.GetComponentInChildren<ArmaVisualJugador>();
-        visualArma.LimpiarArma();
+        // ANIMACION DE ARMA PARA QUE NO DESAPREZCA INSTANTANEAMENTE
+        float tiempoDescongelar = 0.5f; // Tiempo por defecto para Pistola o Golpe
+        if (armaSeleccionada.tipo == DatosArmas.TipoArma.ArmaFuego && armaSeleccionada.rafagas > 1)
+        {
+            tiempoDescongelar = 1.5f; // Tiempo largo para la Metralleta (15 balas)
+        }
+        Invoke("FinalizarAtaque", tiempoDescongelar);
+        // -------------------------------------------
+
+        // --- 2. ELIMINAR EL DIBUJO SOLO CUANDO ES NECESARIO ---
+     
+        if (esMelee)
+        {
+            ArmaVisualJugador visualArma = gameObject.GetComponentInChildren<ArmaVisualJugador>();
+            if (visualArma != null) visualArma.LimpiarArma();
+        }
+        //---------------------------------------
+
+
+        //Invoke("FinalizarAtaque", 0.3f);
+        //ArmaVisualJugador visualArma = gameObject.GetComponentInChildren<ArmaVisualJugador>();
+        //visualArma.LimpiarArma();
         GameObject nuevaArma = Instantiate(armaSeleccionada.prefabArma, puntoDisparo.position, puntoDisparo.rotation);
 
         if (esMelee) nuevaArma.transform.SetParent(transform);
@@ -332,12 +369,18 @@ public class movimientoJugador : MonoBehaviour
 
     void EjecutarAtaqueClicMapa()
     {
+        // --- CORTAMOS ABURRIMIENTO AL EMPEZAR A CARGAR ---
+        if (MiAnimador != null) MiAnimador.InterrumpirAburrimiento();
+        //--------------------------------------------------------------
         Vector3 posicionMouse = Mouse.current.position.ReadValue();
         Vector3 puntoMundo = Camera.main.ScreenToWorldPoint(posicionMouse);
         puntoMundo.z = 0f;
 
         PanelInventario.Instancia.PermisoAtacar = false;
         atacando = true;
+        // Seguro de vida para descongelar al personaje
+        Invoke("FinalizarAtaque", 0.5f);
+        //---------------------------------------
         ArmaVisualJugador visualArma = gameObject.GetComponentInChildren<ArmaVisualJugador>();
         visualArma.LimpiarArma();
         DestruirMiraMouse();
@@ -362,7 +405,9 @@ public class movimientoJugador : MonoBehaviour
         visualArma.LimpiarArma();
         atacando = true;
         Debug.Log(gameObject.name + " está atacando con fuerza de: " + fuerzaLanzamiento);
-
+        // Seguro de vida para descongelar al personaje tras la animación
+        Invoke("FinalizarAtaque", 0.5f);
+        //---------------------------------------
         if (TurnoManager.Instancia != null)
         {
             DatosArmas armaSeleccionada = PanelInventario.Instancia.ArmaEquipadaActiva;
@@ -397,6 +442,12 @@ public class movimientoJugador : MonoBehaviour
             if (scriptCam != null) scriptCam.EnfocarObjetivo(nuevaArma.transform);
         }
     }
+    // --- FUNCIÓN QUE DESCONGELA AL PERSONAJE ---
+    public void FinalizarAtaque()
+    {
+        atacando = false;
+    }
+    //___________________
 
     public void AlternarMira(bool activar)
     {
@@ -532,6 +583,7 @@ public class movimientoJugador : MonoBehaviour
         saltoNormalReciente = false;
     }
 
+
     private void OnDrawGizmos()
     {
         if (!enabled || col2d == null) return;
@@ -554,4 +606,11 @@ public class movimientoJugador : MonoBehaviour
         }
         DestruirMiraMouse();
     }
+    //ANIMACION  Si el TurnoManager apaga a este soldado, limpiamos su estado a la fuerza
+    private void OnDisable()
+    {
+        atacando = false;
+        cargandoDisparo = false;
+    }
+    //---------------
 }

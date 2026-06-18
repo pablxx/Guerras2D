@@ -229,8 +229,8 @@ ScriptedImporter:
     spritePosition: {x: 51, y: 13}
   - name: sombrero
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.5174646, y: 0.5349929}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
@@ -273,7 +273,7 @@ ScriptedImporter:
     spritePosition: {x: 48, y: 324}
   - name: ropaCUERPO
     originalName: 
-    pivot: {x: 0.49999982, y: 0.9100725}
+    pivot: {x: 0.48905367, y: 0.9825944}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 

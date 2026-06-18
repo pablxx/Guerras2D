@@ -158,6 +158,14 @@ public class Botella : Arma
                 if (danioFinal > 0)
                 {
                     vidaObjetivo.RecibirDanio(danioFinal);
+                    // --- AQUÍ LLAMAMOS A LA ANIMACIÓN DE DOLOR ---
+                    // Le avisamos al Gusano golpeado que reproduzca la animación
+                    ControlAnimador animadorEnemigo = col.GetComponentInChildren<ControlAnimador>();
+                    if (animadorEnemigo != null)
+                    {
+                        animadorEnemigo.EjecutarDanio();
+                    }
+                    // ---------------------------------------------
                 }
 
                 if (rbEnemigo != null)

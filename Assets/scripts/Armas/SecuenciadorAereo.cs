@@ -17,6 +17,9 @@ public class SecuenciadorAereo : Arma
 
     private IEnumerator RutinaBombardeoOrdenado()
     {
+        // Inyección quirúrgica: Delay de 1 segundo antes de soltar el primer misil
+        yield return new WaitForSeconds(1.0f);
+
         for (int i = 1; i <= rafagas; i++)
         {
             GameObject misilClonado = Instantiate(prefabMisilAereo, transform.position, Quaternion.identity);
@@ -43,6 +46,7 @@ public class SecuenciadorAereo : Arma
             }
         }
     }
+
     public int ObtenerRadioExplosion() => radioExplosion;
     public float ObtenerRadioDanio() => radioDanio;
     public int ObtenerDanioMaximo() => danioMaximo;
@@ -50,6 +54,6 @@ public class SecuenciadorAereo : Arma
 
     public override void Usar()
     {
-       
+        base.Usar();
     }
 }

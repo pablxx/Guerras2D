@@ -79,7 +79,9 @@ public class GloboAgua : Arma
         {
             Vida vidaObjetivo = col.GetComponent<Vida>();
             Rigidbody2D rbGusano = col.GetComponent<Rigidbody2D>();
-
+            // ---  ANIMADOR DEL GUSANO AFECTADO ---
+            ControlAnimador animadorEnemigo = col.GetComponentInChildren<ControlAnimador>();
+            // ------------------------------------------------
             float distancia = Vector2.Distance(puntoDeImpacto, col.transform.position);
             float factorCercania = (radioDanio - distancia) / radioDanio;
             factorCercania = Mathf.Clamp01(factorCercania);
@@ -92,6 +94,12 @@ public class GloboAgua : Arma
                 if (danioFinal > 0)
                 {
                     vidaObjetivo.RecibirDanio(danioFinal);
+                    // --- AQUÍ LLAMAMOS A LA ANIMACIÓN DE DOLOR ---
+                    if (animadorEnemigo != null)
+                    {
+                        animadorEnemigo.EjecutarDanio();
+                    }
+                    // ---------------------------------------------
                 }
             }
             if (rbGusano != null && factorCercania > 0)

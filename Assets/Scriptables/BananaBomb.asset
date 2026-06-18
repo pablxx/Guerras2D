@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9c7cb3a5661a0b4ebc0ddcb3c0d0c06, type: 3}
   m_Name: BananaBomb
   m_EditorClassIdentifier: 
-  Tipo: 0
+  IDAnimacion: 0
+  Tipo: 1
   NombreArma: BananaBomb
-  Icono: {fileID: 21300000, guid: fa6bd499dc0181349ae4e6c0c54e073b, type: 3}
+  Icono: {fileID: 1809268896325900861, guid: 109142fd296fa4f4b94b63eeb3c603c6, type: 3}
   Descripcion: 'bomba racimo '
   RadioExplosion: 20
   RadioDanio: 2
